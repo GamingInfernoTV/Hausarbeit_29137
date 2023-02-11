@@ -1,0 +1,26 @@
+application {
+    mainClass  = "${group}.${project.name.toLowerCase()}.Server"
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': application.mainClassName
+        )
+    }
+}
+
+dependencies {
+    implementation "org.glassfish.jersey.inject:jersey-hk2:${jerseyVersion}"
+    implementation "org.glassfish.grizzly:grizzly-http-server:${grizzlyVersion}"
+    implementation "org.glassfish.jersey.containers:jersey-container-grizzly2-http:${jerseyVersion}"
+    implementation "org.glassfish.jaxb:jaxb-runtime:${jaxbVersion}"
+    implementation 'javax.ws.rs:javax.ws.rs-api:2.1.1'
+    implementation 'mysql:mysql-connector-java:8.0.28'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.14.0'
+    implementation group: 'org.glassfish.jersey.media', name: 'jersey-media-json-jackson', version: '3.0.3'
+    implementation group: 'com.fasterxml.jackson.jaxrs', name: 'jackson-jaxrs-json-provider', version: '2.14.1'
+    implementation 'org.json:json:20220320'
+
+    implementation project(':Common')
+}

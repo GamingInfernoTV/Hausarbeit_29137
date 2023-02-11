@@ -1,0 +1,5 @@
+rootProject.name = 'Hausarbeit'
+include 'Server'
+include 'Common'
+include 'Client'
+
