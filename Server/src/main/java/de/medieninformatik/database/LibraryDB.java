@@ -1,17 +1,13 @@
 package de.medieninformatik.database;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.medieninformatik.common.Book;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 /**
  * @date 30.11.2023
@@ -46,17 +42,14 @@ public class LibraryDB {
 
     public static List<Book> selectData(String select, String whereParam, String query) {
         Connection conn = LibraryDB.getInstance().getConnection();
-        String json = null;
         List<Book> list = new ArrayList<>();
         if (conn != null) {
             try (Statement statement = conn.createStatement()) {
-                String sql = "SELECT ";
-                sql += select;
-                sql += " FROM informatik.book ";
-                if (Objects.equals(whereParam, "isbn")) {
+                String sql = "SELECT " + select + " FROM informatik.book ";
+                if ("isbn".equals(whereParam)) {
                     sql += "WHERE isbn like '%" + query + "%'";
                 }
-                if (Objects.equals(whereParam, "autor")) {
+                if ("autor".equals(whereParam)) {
                     sql += "WHERE autor like '%" + query + "%'";
                 }
                 sql += ";";
@@ -65,11 +58,9 @@ public class LibraryDB {
 
                 while (result.next()) {
                     Book bink = new Book();
-                    //JSONObject js = new JSONObject();
                     for (int i = 1; i <= resultMetaData.getColumnCount(); i++) {
                         String columnName = resultMetaData.getColumnName(i);
                         switch (columnName.toLowerCase()) {
-
                             case "titel" -> bink.setTitel(result.getString(i));
                             case "isbn" -> bink.setIsbn(result.getString(i));
                             case "autor" -> bink.setAutor(result.getString(i));
@@ -77,6 +68,7 @@ public class LibraryDB {
                             case "verlag" -> bink.setVerlag(result.getString(i));
                             case "erscheinungsjahr" -> bink.setErscheinungsjahr(result.getInt(i));
                             case "seitenzahl" -> bink.setSeitenzahl(result.getInt(i));
+                            default -> throw new IllegalStateException("Unexpected value: " + columnName.toLowerCase());
                         }
                     }
                     JSONObject jsonObject = new JSONObject(bink);

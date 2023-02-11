@@ -15,8 +15,11 @@ import java.util.logging.Logger;
  *
  */
 //TODO funktionen umbenennen und evtl abändern
+
+    //TODO Klasse umbenennen
 @Path("database")
 public class DatabaseRest {
+    //TODO logger kann weg
     private static final Logger LOGGER = Logger.getLogger("org.glassfish");
 
     public DatabaseRest() {

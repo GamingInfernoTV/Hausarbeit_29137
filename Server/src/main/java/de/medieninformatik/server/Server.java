@@ -1,6 +1,5 @@
 package de.medieninformatik.server;
 
-import de.medieninformatik.rest.DatabaseRest;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.grizzly.http.server.ServerConfiguration;
 import org.glassfish.grizzly.http.server.StaticHttpHandler;
@@ -30,18 +29,15 @@ public class Server {
         try {
             LOGGER.setLevel(Level.ALL);
             URI baseURI = new URI(uri);
-            ResourceConfig config =
-                    ResourceConfig.forApplicationClass(BookApplication.class);
-            HttpServer server =
-                    GrizzlyHttpServerFactory.createHttpServer(baseURI, config);
-            StaticHttpHandler httpHandler =
-                    new StaticHttpHandler("web");
+            ResourceConfig config = ResourceConfig.forApplicationClass(BookApplication.class);
+            HttpServer server = GrizzlyHttpServerFactory.createHttpServer(baseURI, config);
+            StaticHttpHandler httpHandler = new StaticHttpHandler("web");
             httpHandler.setFileCacheEnabled(false);
             ServerConfiguration serverConfiguration = server.getServerConfiguration();
             serverConfiguration.addHttpHandler(httpHandler, "/");
 
             if (!server.isStarted()) server.start();
-            System.out.println("Um den Server zu stoppen, beliebige Eingabe taetigen.");
+            System.out.println("Beliebige Eingabe, um den Server zu stoppen.");
             System.in.read();
             server.shutdown();
         } catch (URISyntaxException | IOException e) {

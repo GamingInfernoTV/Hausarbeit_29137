@@ -12,6 +12,7 @@ import java.util.Set;
  *
  */
 public class BookApplication extends Application {
+    //TODO Klasse BookApplication umbenennen
     private static final Set<Class<?>> classes = new HashSet<>();
 
     public BookApplication() {classes.add(DatabaseRest.class);}
