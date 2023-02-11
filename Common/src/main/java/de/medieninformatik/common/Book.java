@@ -5,7 +5,8 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONObject;
 
-import java.util.StringJoiner;
+import java.lang.reflect.Array;
+import java.util.*;
 
 /**
  * @date 30.11.2023
@@ -44,6 +45,23 @@ public class Book {
         if (seitenzahl != 0) sj.add("Seitenzahl=" + seitenzahl);
         if (teilgebiet != null) sj.add(teilgebiet);
         return sj.toString();
+    }
+
+    public Book fromJSON(JSONObject jsonObject) {
+        Book book = new Book();
+        jsonObject.keySet().forEach(s -> {
+            switch (s) {
+                case "titel" -> book.setTitel(jsonObject.getString(s));
+                case "isbn" -> book.setIsbn(jsonObject.getString(s));
+                case "erscheinungsjahr" -> book.setErscheinungsjahr(jsonObject.getInt(s));
+                case "teilgebiet" -> book.setTeilgebiet(jsonObject.getString(s));
+                case "seitenzahl" -> book.setSeitenzahl(jsonObject.getInt(s));
+                case "autor" -> book.setAutor(jsonObject.getString(s));
+                case "verlag" -> book.setVerlag(jsonObject.getString(s));
+                default -> throw new IllegalStateException("Unexpected value: " + s);
+            }
+        });
+        return book;
     }
 
     @JsonSetter

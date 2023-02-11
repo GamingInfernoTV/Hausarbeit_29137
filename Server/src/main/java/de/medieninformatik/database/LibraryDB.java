@@ -57,23 +57,22 @@ public class LibraryDB {
                 ResultSetMetaData resultMetaData = result.getMetaData();
 
                 while (result.next()) {
-                    Book bink = new Book();
+                    Book book = new Book();
+                    JSONObject jsonObject = new JSONObject();
                     for (int i = 1; i <= resultMetaData.getColumnCount(); i++) {
                         String columnName = resultMetaData.getColumnName(i);
                         switch (columnName.toLowerCase()) {
-                            case "titel" -> bink.setTitel(result.getString(i));
-                            case "isbn" -> bink.setIsbn(result.getString(i));
-                            case "autor" -> bink.setAutor(result.getString(i));
-                            case "teilgebiet" -> bink.setTeilgebiet(result.getString(i));
-                            case "verlag" -> bink.setVerlag(result.getString(i));
-                            case "erscheinungsjahr" -> bink.setErscheinungsjahr(result.getInt(i));
-                            case "seitenzahl" -> bink.setSeitenzahl(result.getInt(i));
+                            case "titel" -> jsonObject.put("titel", result.getString(i));
+                            case "isbn" -> jsonObject.put("isbn", result.getString(i));
+                            case "autor" -> jsonObject.put("autor", result.getString(i));
+                            case "teilgebiet" -> jsonObject.put("teilgebiet", result.getString(i));
+                            case "verlag" -> jsonObject.put("verlag", result.getString(i));
+                            case "erscheinungsjahr" -> jsonObject.put("erscheinungsjahr", result.getInt(i));
+                            case "seitenzahl" -> jsonObject.put("seitenzahl", result.getInt(i));
                             default -> throw new IllegalStateException("Unexpected value: " + columnName.toLowerCase());
                         }
                     }
-                    JSONObject jsonObject = new JSONObject(bink);
-                    System.out.println(jsonObject);
-                    list.add(bink);
+                    list.add(book.fromJSON(jsonObject));
                 }
                 return list;
             }
@@ -107,6 +106,7 @@ public class LibraryDB {
     public synchronized Connection getConnection() {
         if (instance != null) {
             try {
+                //TODO (ganz am ende) admin, admin durch minf, prog3 ersetzen
                 connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "admin", "admin");
             } catch (SQLException e) {
                 e.printStackTrace();
