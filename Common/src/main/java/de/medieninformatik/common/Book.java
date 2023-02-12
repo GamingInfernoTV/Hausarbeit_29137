@@ -64,75 +64,60 @@ public class Book {
         return book;
     }
 
-    @JsonSetter
+
     public void setTitel(String titel) {
         this.titel = titel;
     }
 
-    @JsonSetter
     public void setAutor(String autor) {
         this.autor = autor;
     }
 
-    @JsonSetter
     public void setVerlag(String verlag) {
         this.verlag = verlag;
     }
 
-    @JsonSetter
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
-    @JsonSetter
     public void setErscheinungsjahr(int erscheinungsjahr) {
         this.erscheinungsjahr = erscheinungsjahr;
     }
 
-    @JsonSetter
     public void setSeitenzahl(int seitenzahl) {
         this.seitenzahl = seitenzahl;
     }
 
-    @JsonSetter
     public void setTeilgebiet(String teilgebiet) {
         this.teilgebiet = teilgebiet;
     }
 
-    @JsonGetter
     public String getTitel() {
         return titel;
     }
 
-    @JsonGetter
     public String getAutor() {
         return autor;
     }
 
-    @JsonGetter
     public String getVerlag() {
         return verlag;
     }
 
-    @JsonGetter
     public String getIsbn() {
         return isbn;
     }
 
-    @JsonGetter
     public int getErscheinungsjahr() {
         return erscheinungsjahr;
     }
 
-    @JsonGetter
     public int getSeitenzahl() {
         return seitenzahl;
     }
 
-    @JsonGetter
     public String getTeilgebiet() {
         return teilgebiet;
     }
-
-
 }
