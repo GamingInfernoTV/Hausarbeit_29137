@@ -50,6 +50,12 @@ public class DBMSBib {
                 if ("autor".equals(whereParam)) {
                     sql += "WHERE autor like '%" + query + "%'";
                 }
+                if ("verlag".equals(whereParam)) {
+                    sql += "WHERE verlag like '%" + query + "%'";
+                }
+                if ("teilgebiet".equals(whereParam)) {
+                    sql += "WHERE teilgebiet like '%" + query + "%'";
+                }
                 sql += ";";
                 ResultSet result = statement.executeQuery(sql);
                 ResultSetMetaData resultMetaData = result.getMetaData();

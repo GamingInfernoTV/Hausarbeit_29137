@@ -16,7 +16,9 @@ import javafx.stage.Stage;
 import org.json.JSONObject;
 
 import java.io.IOException;
+
 import java.util.List;
+
 import java.util.StringJoiner;
 
 /**
@@ -46,12 +48,18 @@ public class InterfaceController {
     public CheckBox selectAll;
 
     public TextField deleteField;
+    public TextField infotextfield;
+    public TextField userInfoField;
+    public TextField teilgebieteField;
+    public TextField verlagField;
+
 
     LogInController logInController = new LogInController();
 
     private final RestClient restClient = logInController.getRestClient();
 
-    public MenuBar menuBar;
+
+
 
     public Pane updatePane;
 
@@ -107,14 +115,17 @@ public class InterfaceController {
 
     public Pane selectPane;
 
+
     Alert alert = new Alert(Alert.AlertType.ERROR);
 
 
     public void showAdmin() {
         basePane.setVisible(true);
         selectBut.setVisible(true);
-        setAll(new ActionEvent());
         adminPane.setVisible(true);
+        infotextfield.setVisible(true);
+        setAll(new ActionEvent());
+
     }
 
     public void showInsert(ActionEvent actionEvent) {
@@ -137,28 +148,16 @@ public class InterfaceController {
         setAll(new ActionEvent());
         basePane.setVisible(true);
         selectBut.setVisible(true);
+        userInfoField.setVisible(true);
     }
 
-    public void showAutorField(ActionEvent actionEvent) {
-
-        isbnField.setVisible(false);
-        isbnField.clear();
-        autorField.setVisible(true);
-    }
-
-    public void showIsbnField(ActionEvent actionEvent) {
-
-        autorField.setVisible(false);
-        autorField.clear();
-        isbnField.setVisible(true);
-    }
 
     public void showSelect(ActionEvent actionEvent) {
 
         autorField.clear();
         isbnField.clear();
-        autorField.setVisible(false);
-        isbnField.setVisible(false);
+        teilgebieteField.clear();
+        verlagField.clear();
         basePane.setVisible(true);
         insertPane.setVisible(false);
         updatePane.setVisible(false);
@@ -172,28 +171,35 @@ public class InterfaceController {
         tableView.getItems().clear();
         String whereParam = "";
         String query = "";
-        if (isbnField.isVisible()){
-
+        /*if (isbnField.isVisible()){
             if (isbnField.getText().isEmpty()) {
                 alert.setContentText("ISBN fehlt!");
                 alert.show();
-            }
-            else {
+            } else {
                 whereParam = "isbn";
                 query = isbnField.getText();
             }
+        }*/
+        if (!isbnField.getText().isEmpty()) {
+            whereParam = "isbn";
+            query = isbnField.getText();
         }
-        if (autorField.isVisible()){
+        if (!autorField.getText().isEmpty()){
+            whereParam = "autor";
+            query = autorField.getText();
 
-            if (autorField.getText().isEmpty()) {
-                alert.setContentText("Autor fehlt!");
-                alert.show();
-            }
-            else {
-                whereParam = "autor";
-                query = autorField.getText();
-            }
         }
+        if (!verlagField.getText().isEmpty()) {
+            whereParam = "verlag";
+            query = verlagField.getText();
+
+        }
+        if (!teilgebieteField.getText().isEmpty()) {
+            whereParam = "teilgebiet";
+            query = teilgebieteField.getText();
+        }
+
+
 
         String select;
         TableColumn<Book, String> isbn = new TableColumn<>("Isbn");
@@ -272,6 +278,7 @@ public class InterfaceController {
         Select pick = new Select(select, whereParam, query);
         Select.toJSON(pick);
         JSONObject jsonObject = Select.getJsonObject();
+        System.out.println(jsonObject);
         Response r = restClient.postSelect(jsonObject, "/database/select");
         restClient.status(r);
         List<Book> result = r.readEntity(new GenericType<>() {});
@@ -282,29 +289,11 @@ public class InterfaceController {
 
         autorField.clear();
         isbnField.clear();
-        selectPane.setVisible(false);
+        verlagField.clear();
+        teilgebieteField.clear();
+
     }
 
-
-    public void showLogin(ActionEvent actionEvent) {
-
-        Stage current = (Stage) basePane.getScene().getWindow();
-        current.close();
-        Stage loginStage = new Stage();
-        FXMLLoader loader = new FXMLLoader(Interface.class.getResource("/Login.fxml"));
-        logInController = loader.getController();
-        try {
-
-            Scene loginScene = new Scene(loader.load());
-            loginStage.setTitle("Login");
-            loginStage.setScene(loginScene);
-            loginStage.setResizable(false);
-            loginStage.show();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     public void sendUpdate(ActionEvent actionEvent) {
         String update = getString(updateSetISBN, updateSetTitel, updateSetAutor, updateSetTeilgebiet, updateSetVerlag, updateSetErscheinungsjahr,updateSetSeitenzahl);

@@ -44,6 +44,15 @@ public class RestClient {
             whereParam = "autor";
             query = jsonObject.getString("query");
         }
+        if (Objects.equals(jsonObject.getString("whereParam"), "verlag")) {
+            whereParam = "verlag";
+            query = jsonObject.getString("query");
+        }
+        if (Objects.equals(jsonObject.getString("whereParam"), "teilgebiet")) {
+            whereParam = "teilgebiet";
+            query = jsonObject.getString("query");
+        }
+
         if (whereParam != null && query != null) {
              target = getTarget("POST", uri + "/" + jsonObject.getString("select") + "/" + whereParam + "/" + query);
         } else {
