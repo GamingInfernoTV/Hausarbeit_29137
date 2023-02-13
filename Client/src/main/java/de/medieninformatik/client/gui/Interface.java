@@ -13,14 +13,14 @@ import java.io.IOException;
  *
  */
 
-public class Gui extends Application {
+public class Interface extends Application {
     public Stage loginStage;
     private LogInController logInController;
 
 
     @Override
     public void start(Stage stage) {
-        FXMLLoader loader = new FXMLLoader(Gui.class.getResource("/Login.fxml"));
+        FXMLLoader loader = new FXMLLoader(Interface.class.getResource("/Login.fxml"));
         logInController = loader.getController();
         loginStage = stage;
         try {

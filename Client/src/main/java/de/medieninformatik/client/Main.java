@@ -1,6 +1,6 @@
 package de.medieninformatik.client;
 
-import de.medieninformatik.client.gui.Gui;
+import de.medieninformatik.client.gui.Interface;
 import javafx.application.Application;
 
 /**
@@ -11,6 +11,6 @@ import javafx.application.Application;
 
 public class Main {
     public static void main(String[] args) {
-        Application.launch(Gui.class, args);
+        Application.launch(Interface.class, args);
     }
 }

@@ -5,15 +5,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.medieninformatik.client.gui.GuiController">
-    <MenuBar fx:id="menuBar">
-        <menus>
-            <Menu mnemonicParsing="false" text="Logout">
-                <MenuItem mnemonicParsing="false" onAction="#showLogin" text="Logout">
-                </MenuItem>
-            </Menu>
-        </menus>
-    </MenuBar>
+<VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.medieninformatik.client.gui.InterfaceController">
+
     <GridPane fx:id="basePane">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="482.0" minWidth="187.0" prefWidth="474.0" />

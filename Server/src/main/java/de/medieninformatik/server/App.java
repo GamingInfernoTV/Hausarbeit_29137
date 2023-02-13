@@ -1,6 +1,6 @@
 package de.medieninformatik.server;
 
-import de.medieninformatik.rest.DatabaseRest;
+import de.medieninformatik.rest.DBMSRest;
 import jakarta.ws.rs.core.Application;
 
 import java.util.HashSet;
@@ -11,11 +11,10 @@ import java.util.Set;
  * @author Carolin Baum m29137
  *
  */
-public class BookApplication extends Application {
-    //TODO Klasse BookApplication umbenennen
+public class App extends Application {
     private static final Set<Class<?>> classes = new HashSet<>();
 
-    public BookApplication() {classes.add(DatabaseRest.class);}
+    public App() {classes.add(DBMSRest.class);}
 
     @Override
     public Set<Class<?>> getClasses() {

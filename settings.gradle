@@ -1,4 +1,5 @@
-rootProject.name = 'Hausarbeit'
+rootProject.name = 'Hausarbeit_m29137'
+
 include 'Server'
 include 'Common'
 include 'Client'

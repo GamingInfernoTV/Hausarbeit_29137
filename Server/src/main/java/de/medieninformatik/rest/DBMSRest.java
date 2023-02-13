@@ -1,13 +1,12 @@
 package de.medieninformatik.rest;
 
-import de.medieninformatik.common.Book;
-import de.medieninformatik.database.LibraryDB;
+import de.medieninformatik.common.library.Book;
+import de.medieninformatik.database.DBMSBib;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 import java.sql.Connection;
-import java.util.logging.Logger;
 
 /**
  * @date 30.11.2023
@@ -16,21 +15,19 @@ import java.util.logging.Logger;
  */
 //TODO funktionen umbenennen und evtl abändern
 
-    //TODO Klasse umbenennen
 @Path("database")
-public class DatabaseRest {
-    //TODO logger kann weg
-    private static final Logger LOGGER = Logger.getLogger("org.glassfish");
+public class DBMSRest {
 
-    public DatabaseRest() {
+
+    //public DatabaseRest() {
         // TODO document why this constructor is empty
-    }
+   // }
 //TODO login abändern sodass überprüft wird ob user = teil der userklasse in common
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("login")
     public Response login() {
-        Connection result = LibraryDB.getInstance().getConnection();
+        Connection result = DBMSBib.getInstance().getConnection();
         if (result != null) {
             return Response.ok().build();
         }
@@ -46,7 +43,7 @@ public class DatabaseRest {
             @PathParam("where") String where,
             @PathParam("query") String query
             ) {
-        var result = LibraryDB.selectData(select, where, query);
+        var result = DBMSBib.selectData(select, where, query);
         return Response.ok(result, MediaType.APPLICATION_JSON).build();
     }
 
@@ -57,7 +54,7 @@ public class DatabaseRest {
     public Response selectData(
             @PathParam("query") String select
     ) {
-        var result = LibraryDB.selectData(select, "", "");
+        var result = DBMSBib.selectData(select, "", "");
         return Response.ok(result, MediaType.APPLICATION_JSON).build();
     }
 
@@ -66,7 +63,7 @@ public class DatabaseRest {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("update/{query}/{whereParam}")
     public Response updateData(@PathParam("query") String query, @PathParam("whereParam") String whereParam) {
-        var result = LibraryDB.updateData(query, whereParam);
+        var result = DBMSBib.updateData(query, whereParam);
         return Response.ok(result, MediaType.APPLICATION_JSON).build();
     }
 
@@ -75,7 +72,7 @@ public class DatabaseRest {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("insertInto")
     public Response insertData(Book book) {
-        Boolean result = LibraryDB.insertData(book);
+        Boolean result = DBMSBib.insertData(book);
         return Response.ok(result).build();
     }
 
@@ -84,12 +81,8 @@ public class DatabaseRest {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("delete/{query}")
     public Response deleteData(@PathParam("query") String query) {
-        var result = LibraryDB.deleteData(query);
+        var result = DBMSBib.deleteData(query);
         return Response.ok(result).build();
     }
-
-
-//TODO putUser kann gelöscht werden
-//TODO testData löschen
 
 }

@@ -1,11 +1,7 @@
-package de.medieninformatik.common;
+package de.medieninformatik.common.library;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 /**

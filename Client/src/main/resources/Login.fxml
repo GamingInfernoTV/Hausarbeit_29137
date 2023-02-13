@@ -1,29 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.medieninformatik.client.gui.LogInController">
+<Pane prefHeight="202.0" prefWidth="529.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.medieninformatik.client.gui.LogInController">
    <children>
-      <TextField fx:id="userField" maxWidth="300.0" minWidth="100.0" prefWidth="300.0" promptText="Username">
-         <VBox.margin>
-            <Insets left="50.0" top="20.0" />
-         </VBox.margin>
-      </TextField>
-      <PasswordField fx:id="passwordField" maxWidth="300.0" onAction="#sendLogin" promptText="Password">
-         <VBox.margin>
-            <Insets left="50.0" top="15.0" />
-         </VBox.margin>
-      </PasswordField>
-      <Button fx:id="loginButton" mnemonicParsing="false" onAction="#sendLogin" prefWidth="50.0" text="Login">
-         <VBox.margin>
-            <Insets left="175.0" top="15.0" />
-         </VBox.margin>
+      <TextField fx:id="userField" layoutX="26.0" layoutY="101.0" maxWidth="300.0" minWidth="100.0" prefHeight="25.0" prefWidth="220.0" promptText="Benutzername" />
+      <PasswordField fx:id="passwordField" layoutX="276.0" layoutY="101.0" maxWidth="300.0" onAction="#sendLogin" prefHeight="25.0" prefWidth="220.0" promptText="Passwort" />
+      <Button fx:id="loginButton" layoutX="237.0" layoutY="150.0" mnemonicParsing="false" onAction="#sendLogin" prefWidth="50.0" text="Login">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <TextField editable="false" layoutX="126.0" layoutY="30.0" prefHeight="25.0" prefWidth="272.0" text="Bitte geben Sie Benutzername und Passwort ein." />
    </children>
-</VBox>
+</Pane>

@@ -1,7 +1,6 @@
 package de.medieninformatik.database;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import de.medieninformatik.common.Book;
+import de.medieninformatik.common.library.Book;
 import org.json.JSONObject;
 
 import java.sql.*;
@@ -15,21 +14,20 @@ import java.util.Objects;
  *
  */
 
-public class LibraryDB {
-    private static LibraryDB instance = null;
+public class DBMSBib {
+    private static DBMSBib instance = null;
     private Connection connection;
-    static ObjectMapper mapper = new ObjectMapper();
 
-    //TODO Mapper löschen oder anwenden
-    private LibraryDB() {
+    private DBMSBib() {
     }
+    //Bib = Bibliothek
 
     //TODO funktionen umbenennen und eventuell funktionsweise ändern
-    public synchronized static LibraryDB getInstance() {
+    public synchronized static DBMSBib getInstance() {
         if (instance == null) {
             try {
-                LibraryDB db = new LibraryDB();
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306", "admin", "admin");
+                DBMSBib db = new DBMSBib();
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306", "minf", "prog3");
                 instance = db;
                 instance.connection = conn;
             } catch (SQLException e) {
@@ -41,7 +39,7 @@ public class LibraryDB {
 
 
     public static List<Book> selectData(String select, String whereParam, String query) {
-        Connection conn = LibraryDB.getInstance().getConnection();
+        Connection conn = DBMSBib.getInstance().getConnection();
         List<Book> list = new ArrayList<>();
         if (conn != null) {
             try (Statement statement = conn.createStatement()) {
@@ -85,7 +83,7 @@ public class LibraryDB {
     }
 
     public static Boolean deleteData(String query) {
-        Connection conn = LibraryDB.getInstance().getConnection();
+        Connection conn = DBMSBib.getInstance().getConnection();
         Boolean bool = false;
         if (conn != null) {
 
@@ -107,7 +105,7 @@ public class LibraryDB {
         if (instance != null) {
             try {
                 //TODO (ganz am ende) admin, admin durch minf, prog3 ersetzen
-                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "admin", "admin");
+                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "minf", "prog3");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -117,7 +115,7 @@ public class LibraryDB {
     }
 
     public static Boolean insertData(Book book) {
-        Connection conn = LibraryDB.getInstance().getConnection();
+        Connection conn = DBMSBib.getInstance().getConnection();
         Boolean bool = false;
         if (conn != null) {
             try (Statement statement = conn.createStatement()) {
@@ -139,7 +137,7 @@ public class LibraryDB {
     }
 
     public static Boolean updateData(String query, String whereParam) {
-        Connection conn = LibraryDB.getInstance().getConnection();
+        Connection conn = DBMSBib.getInstance().getConnection();
         Boolean bool = false;
         if (conn != null) {
             try (Statement statement = conn.createStatement()) {

@@ -1,11 +1,5 @@
 package de.medieninformatik.common;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.PropertyAccessor;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.json.JSONObject;
-
 import java.util.Objects;
 
 /**
@@ -14,19 +8,19 @@ import java.util.Objects;
  *
  */
 
-public class User {
+public class Login {
 
     String userName;
 
     String password;
     public static String json;
 
-    public User(String userName, String password) {
+    public Login(String userName, String password) {
         this.userName = userName;
         this.password = password;
     }
 
-    public Boolean login() {
+    public Boolean UserLogin() {
         Boolean bool = null;
         switch (userName) {
             case "minf":

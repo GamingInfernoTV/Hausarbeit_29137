@@ -1,9 +1,8 @@
 package de.medieninformatik.client.gui;
 
 import de.medieninformatik.client.rest.RestClient;
-import de.medieninformatik.common.Book;
-import de.medieninformatik.common.SelectQuery;
-import de.medieninformatik.common.UpdateQuery;
+import de.medieninformatik.common.library.Book;
+import de.medieninformatik.common.query.Select;
 import jakarta.ws.rs.core.GenericType;
 import jakarta.ws.rs.core.Response;
 import javafx.event.ActionEvent;
@@ -11,7 +10,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -27,7 +25,7 @@ import java.util.StringJoiner;
  *
  */
 
-public class GuiController {
+public class InterfaceController {
 
     public TableView<Book> tableView;
 
@@ -271,9 +269,9 @@ public class GuiController {
             select = sl.toString();
         }
 
-        SelectQuery selectQuery = new SelectQuery(select, whereParam, query);
-        SelectQuery.toJSON(selectQuery);
-        JSONObject jsonObject = SelectQuery.getJsonObject();
+        Select pick = new Select(select, whereParam, query);
+        Select.toJSON(pick);
+        JSONObject jsonObject = Select.getJsonObject();
         Response r = restClient.postSelect(jsonObject, "/database/select");
         restClient.status(r);
         List<Book> result = r.readEntity(new GenericType<>() {});
@@ -293,7 +291,7 @@ public class GuiController {
         Stage current = (Stage) basePane.getScene().getWindow();
         current.close();
         Stage loginStage = new Stage();
-        FXMLLoader loader = new FXMLLoader(Gui.class.getResource("/Login.fxml"));
+        FXMLLoader loader = new FXMLLoader(Interface.class.getResource("/Login.fxml"));
         logInController = loader.getController();
         try {
 

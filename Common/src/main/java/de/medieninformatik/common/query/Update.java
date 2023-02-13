@@ -1,4 +1,4 @@
-package de.medieninformatik.common;
+package de.medieninformatik.common.query;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
@@ -12,31 +12,31 @@ import org.json.JSONObject;
  *
  */
 
-public class UpdateQuery {
+public class Update {
     String update;
     String whereISBN;
     private static JSONObject jsonObject;
     public static String json;
 
-    public UpdateQuery(String update, String whereISBN) {
+    public Update(String update, String whereISBN) {
         this.update = update;
         this.whereISBN = whereISBN;
     }
 
     public static void setJsonObject(JSONObject jsonObject) {
-        UpdateQuery.jsonObject = jsonObject;
+        Update.jsonObject = jsonObject;
     }
 
     public static JSONObject getJsonObject() {
         return jsonObject;
     }
 
-    public static void toJSON(UpdateQuery query) {
-        ObjectMapper mapper = new ObjectMapper();
+    public static void toJSON(Update query) {
+       ObjectMapper mapper = new ObjectMapper();
         mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
         try {
             json = mapper.writeValueAsString(query);
-            UpdateQuery.setJsonObject(new JSONObject(json));
+            Update.setJsonObject(new JSONObject(json));
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }

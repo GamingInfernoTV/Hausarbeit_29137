@@ -29,7 +29,7 @@ public class Server {
         try {
             LOGGER.setLevel(Level.ALL);
             URI baseURI = new URI(uri);
-            ResourceConfig config = ResourceConfig.forApplicationClass(BookApplication.class);
+            ResourceConfig config = ResourceConfig.forApplicationClass(App.class);
             HttpServer server = GrizzlyHttpServerFactory.createHttpServer(baseURI, config);
             StaticHttpHandler httpHandler = new StaticHttpHandler("web");
             httpHandler.setFileCacheEnabled(false);

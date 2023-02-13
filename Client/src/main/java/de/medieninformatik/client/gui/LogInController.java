@@ -1,8 +1,7 @@
 package de.medieninformatik.client.gui;
 
 import de.medieninformatik.client.rest.RestClient;
-import de.medieninformatik.common.User;
-import jakarta.ws.rs.core.Response;
+import de.medieninformatik.common.Login;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,9 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -42,19 +39,19 @@ public class LogInController {
     }
 
     public void sendLogin(ActionEvent actionEvent) throws IOException {
-        User user = new User(userField.getText(), passwordField.getText());
+        Login login = new Login(userField.getText(), passwordField.getText());
 
         Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Gui.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Interface.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        GuiController c = fxmlLoader.getController();
+        InterfaceController c = fxmlLoader.getController();
 
         stage.setTitle("Hausarbeit");
         stage.setScene(scene);
         stage.setResizable(false);
 
 
-        if (user.login()) {
+        if (login.UserLogin()) {
 
             if (Objects.equals(userField.getText(), "admin")
                     && Objects.equals(passwordField.getText(), "admin")) {
