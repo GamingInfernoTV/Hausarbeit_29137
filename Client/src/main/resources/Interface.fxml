@@ -8,41 +8,32 @@
 
 <GridPane fx:id="basePane" cacheShape="false" centerShape="false" prefHeight="587.0" prefWidth="791.0" scaleShape="false" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.medieninformatik.client.gui.InterfaceController">
    <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="554.0" minWidth="10.0" prefWidth="318.0" />
-      <ColumnConstraints maxWidth="743.0" minWidth="237.0" prefWidth="473.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="554.0" minWidth="10.0" prefWidth="69.0" />
+      <ColumnConstraints maxWidth="743.0" minWidth="237.0" prefWidth="722.0" />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints maxHeight="276.0" minHeight="10.0" prefHeight="140.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="559.0" minHeight="311.0" prefHeight="447.0" />
    </rowConstraints>
    <children>
-
-
-
-
-               <Button fx:id="selectBut" alignment="TOP_LEFT" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#showSelect" prefHeight="25.0" prefWidth="60.0" text="Select" visible="false">
-                   <GridPane.margin>
-                       <Insets bottom="75.0" />
-                   </GridPane.margin>
-            </Button>
-               <Pane fx:id="adminPane" prefHeight="94.0" prefWidth="101.0">
-                   <Button fx:id="insertBut" alignment="CENTER" mnemonicParsing="false" onAction="#showInsert" prefHeight="25.0" prefWidth="60.0" text="Insert" textAlignment="CENTER">
+               <Pane fx:id="adminPane" prefHeight="196.0" prefWidth="69.0" visible="false">
+                   <Button fx:id="insertBut" alignment="CENTER" layoutX="5.0" layoutY="50.0" mnemonicParsing="false" onAction="#showInsert" prefHeight="25.0" prefWidth="60.0" text="Insert" textAlignment="CENTER">
                        <GridPane.margin>
                            <Insets bottom="50.0" left="104.0" />
                        </GridPane.margin>
                    </Button>
-                   <Button fx:id="updateBut" mnemonicParsing="false" onAction="#showUpdate" prefHeight="25.0" prefWidth="60.0" text="Update" textAlignment="CENTER" translateY="30.0">
+                   <Button fx:id="updateBut" layoutX="5.0" layoutY="50.0" mnemonicParsing="false" onAction="#showUpdate" prefHeight="25.0" prefWidth="60.0" text="Update" textAlignment="CENTER" translateY="30.0">
                        <GridPane.margin>
                            <Insets left="152.0" top="50.0" />
                        </GridPane.margin>
                    </Button>
-                         <Button fx:id="deleteBut" mnemonicParsing="false" onAction="#showDelete" prefHeight="25.0" prefWidth="60.0" text="Delete" textAlignment="CENTER" translateY="60.0">
+                         <Button fx:id="deleteBut" layoutX="5.0" layoutY="50.0" mnemonicParsing="false" onAction="#showDelete" prefHeight="25.0" prefWidth="60.0" text="Delete" textAlignment="CENTER" translateY="60.0">
                        <GridPane.margin>
                            <Insets left="10.0" top="10.0" />
                        </GridPane.margin>
                    </Button>
                     <GridPane.margin>
-                       <Insets bottom="10.0" right="230.0" top="50.0" />
+                       <Insets />
                    </GridPane.margin>
                </Pane>
             <TableView fx:id="tableView" prefHeight="457.0" prefWidth="421.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -52,42 +43,13 @@
                   <Insets bottom="5.0" right="5.0" />
                </GridPane.margin>
             </TableView>
-               <Pane fx:id="selectPane" prefHeight="441.0" prefWidth="486.0" GridPane.rowIndex="1">
-                   <TextField fx:id="autorField" layoutX="65.0" layoutY="269.0" prefHeight="25.0" prefWidth="197.0" promptText="Autor">
-
-                </TextField>
-                   <Button layoutX="126.0" layoutY="383.0" onAction="#sendSelect" text="Abschicken" textAlignment="CENTER">
-
-                </Button>
-                   <TextField fx:id="isbnField" layoutX="65.0" layoutY="235.0" prefHeight="25.0" prefWidth="197.0" promptText="ISBN " />
-                   <TextField fx:id="teilgebieteField" layoutX="65.0" layoutY="338.0" prefHeight="25.0" prefWidth="197.0" promptText="Teilgebiete" />
-                   <TextField fx:id="verlagField" layoutX="65.0" layoutY="303.0" prefHeight="25.0" prefWidth="197.0" promptText="Verlag" />
-
-
-                   <CheckBox fx:id="selectAll" layoutX="139.0" layoutY="50.0" mnemonicParsing="false" onAction="#setAll" text="Alle" />
-                   <CheckBox fx:id="selectTitel" layoutX="76.0" layoutY="112.0" mnemonicParsing="false" onAction="#removeAll" text="Titel" />
-                   <CheckBox fx:id="selectAutor" layoutX="134.0" layoutY="112.0" mnemonicParsing="false" onAction="#removeAll" text="Autor" />
-                   <CheckBox fx:id="selectISBN" layoutX="19.0" layoutY="112.0" mnemonicParsing="false" onAction="#removeAll" text="ISBN" />
-                   <CheckBox fx:id="selectVerlag" layoutX="195.0" layoutY="112.0" mnemonicParsing="false" onAction="#removeAll" text="Verlag" />
-                   <CheckBox fx:id="selectJahr" layoutX="195.0" layoutY="145.0" mnemonicParsing="false" onAction="#removeAll" text="Erscheinungsjahr" />
-                   <CheckBox fx:id="selectSeiten" layoutX="28.0" layoutY="145.0" mnemonicParsing="false" onAction="#removeAll" text="Seitenzahl" />
-                   <CheckBox fx:id="selectTeilgebiet" layoutX="109.0" layoutY="145.0" mnemonicParsing="false" onAction="#removeAll" text="Teilgebiete" />
-         <TextField alignment="CENTER" editable="false" layoutX="9.0" layoutY="14.0" prefHeight="25.0" prefWidth="300.0" text="Welche Inhalte möchten Sie sehen?">
-            <font>
-               <Font name="System Bold" size="12.0" />
-            </font>
-         </TextField>
-         <TextField alignment="CENTER" editable="false" layoutX="109.0" layoutY="78.0" prefHeight="25.0" prefWidth="100.0" text="Oder:" />
-         <TextField alignment="CENTER" editable="false" layoutX="72.0" layoutY="180.0" prefHeight="25.0" prefWidth="183.0" text="Oder suchen Sie direkt nach:" />
-
-               </Pane>
-               <Pane fx:id="insertPane" visible="false" GridPane.rowIndex="1">
-                   <TextField fx:id="insertTitel" layoutX="31.0" layoutY="40.0" prefColumnCount="1" prefHeight="25.0" prefWidth="257.0" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <Pane fx:id="insertPane" prefHeight="140.0" prefWidth="558.0" visible="false" GridPane.columnIndex="1">
+                   <TextField fx:id="insertTitel" layoutX="7.0" layoutY="26.0" prefColumnCount="1" prefHeight="25.0" prefWidth="257.0" GridPane.rowIndex="1" GridPane.valignment="TOP">
                        <GridPane.margin>
                            <Insets left="5.0" right="100.0" />
                        </GridPane.margin>
                    </TextField>
-                   <TextField fx:id="insertAutor" layoutX="31.0" layoutY="99.0" prefColumnCount="2" prefHeight="25.0" prefWidth="257.0" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                   <TextField fx:id="insertAutor" layoutX="264.0" layoutY="26.0" prefColumnCount="2" prefHeight="25.0" prefWidth="257.0" GridPane.rowIndex="1" GridPane.valignment="TOP">
                        <GridPane.margin>
                            <Insets left="5.0" right="100.0" top="30.0" />
                        </GridPane.margin>
@@ -95,110 +57,176 @@
                            <Insets />
                        </opaqueInsets>
                    </TextField>
-                   <TextField fx:id="insertTeilgebiet" layoutX="31.0" layoutY="158.0" prefHeight="25.0" prefWidth="257.0" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                   <TextField fx:id="insertTeilgebiet" layoutX="7.0" layoutY="77.0" prefHeight="25.0" prefWidth="257.0" GridPane.rowIndex="1" GridPane.valignment="TOP">
                        <GridPane.margin>
                            <Insets left="5.0" right="100.0" top="60.0" />
                        </GridPane.margin>
                    </TextField>
-                   <TextField fx:id="insertISBN" layoutX="32.0" layoutY="209.0" prefHeight="25.0" prefWidth="257.0" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                   <TextField fx:id="insertISBN" layoutX="264.0" layoutY="77.0" prefHeight="25.0" prefWidth="257.0" GridPane.rowIndex="1" GridPane.valignment="TOP">
                        <GridPane.margin>
                            <Insets left="5.0" right="100.0" top="90.0" />
                        </GridPane.margin>
                    </TextField>
-                   <TextField fx:id="insertVerlag" layoutX="31.0" layoutY="262.0" prefHeight="25.0" prefWidth="257.0" promptText="Verlag" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                   <TextField fx:id="insertVerlag" layoutX="521.0" layoutY="77.0" prefHeight="25.0" prefWidth="197.0" GridPane.rowIndex="1" GridPane.valignment="TOP">
                        <GridPane.margin>
                            <Insets left="5.0" right="100.0" top="120.0" />
                        </GridPane.margin>
                    </TextField>
-                   <TextField fx:id="insertErscheinungsjahr" layoutX="31.0" layoutY="310.0" prefHeight="25.0" prefWidth="257.0" promptText="Erscheinungsjahr" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                   <TextField fx:id="insertErscheinungsjahr" layoutX="521.0" layoutY="26.0" prefHeight="25.0" prefWidth="100.0" GridPane.rowIndex="1" GridPane.valignment="TOP">
                          <GridPane.margin>
                            <Insets left="5.0" right="100.0" top="150.0" />
                        </GridPane.margin>
                    </TextField>
-                   <TextField fx:id="insertSeitenzahl" layoutX="31.0" layoutY="360.0" prefHeight="25.0" prefWidth="257.0" promptText="Seitenzahl" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                   <TextField fx:id="insertSeitenzahl" layoutX="621.0" layoutY="26.0" prefHeight="25.0" prefWidth="95.0" GridPane.rowIndex="1" GridPane.valignment="TOP">
                        <GridPane.margin>
                            <Insets left="5.0" right="100.0" top="180.0" />
                        </GridPane.margin>
                    </TextField>
-                   <Button layoutX="121.0" layoutY="402.0" mnemonicParsing="false" onAction="#sendInsert" text="Hinzufügen" GridPane.rowIndex="1">
+                   <Button layoutX="353.0" layoutY="114.0" mnemonicParsing="false" onAction="#insert" text="Hinzufügen" GridPane.rowIndex="1">
                        <cursor>
                            <Cursor fx:constant="HAND" />
                        </cursor>
                    </Button>
-         <TextField alignment="CENTER" editable="false" layoutX="136.0" layoutY="14.0" prefHeight="25.0" prefWidth="46.0" text="TITEL">
+         <TextField alignment="CENTER" editable="false" layoutX="112.0" prefHeight="25.0" prefWidth="46.0" text="TITEL">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
          </TextField>
-         <TextField editable="false" layoutX="132.0" layoutY="73.0" prefHeight="25.0" prefWidth="55.0" text="AUTOR">
+         <TextField editable="false" layoutX="365.0" prefHeight="25.0" prefWidth="55.0" text="AUTOR">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
          </TextField>
-         <TextField editable="false" layoutX="122.0" layoutY="132.0" prefHeight="25.0" prefWidth="75.0" text="Teilgebiet">
+         <TextField editable="false" layoutX="98.0" layoutY="51.0" prefHeight="25.0" prefWidth="75.0" text="Teilgebiet">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
          </TextField>
-         <TextField editable="false" layoutX="137.0" layoutY="183.0" prefHeight="25.0" prefWidth="46.0" text="ISBN">
+         <TextField editable="false" layoutX="369.0" layoutY="51.0" prefHeight="25.0" prefWidth="46.0" text="ISBN">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
          </TextField>
-         <TextField layoutX="86.0" layoutY="234.0" />
+         <TextField layoutX="605.0" layoutY="51.0" prefHeight="25.0" prefWidth="51.0" text="Verlag">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font></TextField>
+         <TextField layoutX="514.0" prefHeight="25.0" prefWidth="110.0" text="Erscheinungsjahr">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+         </TextField>
+         <TextField layoutX="625.0" prefHeight="25.0" prefWidth="87.0" text="Seitenanzahl">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+         </TextField>
+         <TextField editable="false" layoutX="147.0" layoutY="114.0" prefHeight="25.0" prefWidth="191.0" text="Sie müssen jedes Feld ausfüllen!">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+         </TextField>
                          <GridPane.margin>
                        <Insets />
                    </GridPane.margin>
                </Pane>
-               <Pane fx:id="updatePane" prefHeight="430.0" prefWidth="486.0" visible="false" GridPane.rowIndex="1">
-               <Label layoutX="15.0" layoutY="30.0" minHeight="10.0" prefHeight="25.0" prefWidth="450.0" text="Eingabeformat: { Spaltenname='Eingabe', } (letzte Eingabe ohne Komma)" />
-               <Label layoutX="15.0" layoutY="190.0" minHeight="10.0" prefHeight="25.0" prefWidth="95.0" text="SET" />
-               <Label layoutX="15.0" layoutY="350.0" minHeight="10.0" prefHeight="25.0" prefWidth="95.0" text="WHERE" />
-                   <TextField fx:id="updateSetISBN" layoutX="120.0" layoutY="70.0" prefWidth="340.0" promptText="ISBN=  { Eingabe }">
+               <Pane fx:id="updatePane" prefHeight="447.0" prefWidth="85.0" visible="false" GridPane.columnIndex="1">
+                   <TextField fx:id="updateSetTitel" layoutX="374.0" layoutY="30.0" prefHeight="25.0" prefWidth="173.0" promptText="Titel">
 
                 </TextField>
-                   <TextField fx:id="updateSetTitel" layoutX="120.0" layoutY="110.0" prefWidth="340.0" promptText="Titel= { Eingabe }">
+                         <TextField fx:id="updateSetAutor" layoutX="549.0" layoutY="30.0" prefHeight="25.0" prefWidth="173.0" promptText="Autor">
 
                 </TextField>
-                         <TextField fx:id="updateSetAutor" layoutX="120.0" layoutY="150.0" prefWidth="340.0" promptText="Autor= { Eingabe }">
+                   <TextField fx:id="updateSetTeilgebiet" layoutX="374.0" layoutY="59.0" prefHeight="25.0" prefWidth="173.0" promptText="Teilgebiete">
 
                 </TextField>
-                   <TextField fx:id="updateSetTeilgebiet" layoutX="120.0" layoutY="190.0" prefWidth="340.0" promptText="Teilgebiet= { Eingabe }">
+                   <TextField fx:id="updateSetVerlag" layoutX="549.0" layoutY="59.0" prefHeight="25.0" prefWidth="173.0" promptText="Verlag">
 
                 </TextField>
-                   <TextField fx:id="updateSetVerlag" layoutX="120.0" layoutY="230.0" prefWidth="340.0" promptText="Verlag= { Eingabe }">
+                   <TextField fx:id="updateSetErscheinungsjahr" layoutX="374.0" layoutY="88.0" prefHeight="25.0" prefWidth="173.0" promptText="Erscheinungsjahr">
 
                 </TextField>
-                   <TextField fx:id="updateSetErscheinungsjahr" layoutX="120.0" layoutY="270.0" prefWidth="340.0" promptText="Erscheinungsjahr= { Eingabe }">
+                   <TextField fx:id="updateSetSeitenzahl" layoutX="549.0" layoutY="88.0" prefHeight="25.0" prefWidth="173.0" promptText="Seitenanzahl">
 
                 </TextField>
-                   <TextField fx:id="updateSetSeitenzahl" layoutX="120.0" layoutY="310.0" prefWidth="340.0" promptText="Seitenzahl= { Seitenzahl }">
+                   <TextField fx:id="updateWhereColumnField" layoutX="55.0" layoutY="32.0" prefHeight="25.0" prefWidth="204.0" promptText="ISBN">
 
                 </TextField>
-                   <TextField fx:id="updateWhereColumnField" layoutX="120.0" layoutY="350.0" prefWidth="340.0" promptText="ISBN= { ISBN Eingabe }">
-
-                </TextField>
-                   <Button layoutX="175.0" layoutY="400.0" mnemonicParsing="false" onAction="#sendUpdate" text="Abschicken" textAlignment="CENTER" GridPane.rowIndex="1">
+                   <Button layoutX="119.0" layoutY="95.0" mnemonicParsing="false" onAction="#sendUpdate" text="Abschicken" textAlignment="CENTER" GridPane.rowIndex="1">
                        <cursor>
                            <Cursor fx:constant="HAND" />
                        </cursor>
                    </Button>
+         <TextField editable="false" layoutX="-1.0" layoutY="-1.0" prefHeight="25.0" prefWidth="364.0" text="1. Bei welchem Buch möchten Sie eine Änderung vornehmen?">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font></TextField>
+         <TextField editable="false" layoutX="456.0" layoutY="-1.0" prefHeight="25.0" prefWidth="191.0" text="2. Was möchten Sie verändern?">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font></TextField>
+         <TextField fx:id="updateSetISBN" layoutX="475.0" layoutY="116.0" promptText="ISBN" />
                </Pane>
-               <Pane fx:id="deletePane" prefHeight="0.0" prefWidth="486.0" visible="false" GridPane.rowIndex="1">
-               <Label layoutX="15.0" layoutY="350.0" minHeight="10.0" prefHeight="25.0" prefWidth="95.0" text="DELETE" />
-               <Label layoutX="125.0" layoutY="320.0" minHeight="10.0" prefHeight="25.0" prefWidth="290.0" text="Lösche das Buch mit der ISBN:" />
-               <TextField fx:id="deleteField" layoutX="120.0" layoutY="350.0" prefWidth="290.0" />
-                   <Button layoutX="175.0" layoutY="400.0" mnemonicParsing="false" onAction="#sendDelete" text="Löschen" GridPane.rowIndex="1">
+               <Pane fx:id="deletePane" prefHeight="0.0" prefWidth="486.0" visible="false" GridPane.columnIndex="1">
+               <TextField fx:id="deleteField" layoutX="231.0" layoutY="36.0" prefWidth="290.0" />
+                   <Button layoutX="308.0" layoutY="89.0" mnemonicParsing="false" onAction="#sendDelete" text="Unwideruflich Löschen" GridPane.rowIndex="1">
                        <cursor>
                            <Cursor fx:constant="HAND" />
                        </cursor>
                    </Button>
+         <TextField layoutX="129.0" layoutY="2.0" prefHeight="25.0" prefWidth="494.0" text="Welches Buch möchten Sie aus der Datenbank löschen? Bitte Geben SIe die ISBN ein.">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+         </TextField>
                </Pane>
       <TextField fx:id="infotextfield" alignment="TOP_LEFT" editable="false" prefHeight="142.0" prefWidth="473.0" text="Als Admin sind Sie befugt Einträge einzusehen, hinzuzufügen, bearbeiten oder zu löschen." visible="false" GridPane.columnIndex="1">
          <font>
             <Font size="10.0" />
          </font></TextField>
       <TextField fx:id="userInfoField" alignment="TOP_LEFT" prefHeight="210.0" prefWidth="473.0" text="Als User sind Sie berechtigt die Inhalte der Datenbank zu lesen." visible="false" GridPane.columnIndex="1" />
+      <Pane fx:id="selectPane" prefHeight="200.0" prefWidth="200.0" visible="false" GridPane.columnIndex="1">
+         <children>
+            <TextField alignment="CENTER" editable="false" layoutY="2.0" prefHeight="25.0" prefWidth="340.0" text="Welche Inhalte möchten Sie sehen?">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </TextField>
+
+
+
+
+            <TextField alignment="CENTER" editable="false" layoutX="54.0" layoutY="65.0" prefHeight="25.0" prefWidth="46.0" text="Oder:" />
+
+            <RadioButton fx:id="radioAll" layoutY="69.0" mnemonicParsing="false" onAction="#setAll" text="Alle" />
+            <RadioButton fx:id="radioISBN" layoutX="106.0" layoutY="38.0" mnemonicParsing="false" onAction="#removeAll" text="ISBN" />
+            <RadioButton fx:id="radioTitel" layoutX="106.0" layoutY="59.0" mnemonicParsing="false" onAction="#removeAll" text="Titel" />
+            <RadioButton fx:id="radioAutor" layoutX="216.0" layoutY="59.0" mnemonicParsing="false" onAction="#removeAll" text="Autor" />
+            <RadioButton fx:id="radioVerlag" layoutX="106.0" layoutY="80.0" mnemonicParsing="false" onAction="#removeAll" text="Verlag" />
+            <RadioButton fx:id="radioSeiten" layoutX="216.0" layoutY="38.0" mnemonicParsing="false" onAction="#removeAll" text="Seitenanzahl" />
+            <RadioButton fx:id="radioTeilgebiet" layoutX="216.0" layoutY="80.0" mnemonicParsing="false" onAction="#removeAll" text="Teilgebiete" />
+            <RadioButton fx:id="radioJahr" layoutX="106.0" layoutY="101.0" mnemonicParsing="false" onAction="#removeAll" text="Erscheinungsjahr" />
+                      <TextField fx:id="autorField" layoutX="406.0" layoutY="57.0" prefHeight="25.0" prefWidth="197.0" promptText="Autor">
+
+                </TextField>
+                      <Button layoutX="624.0" layoutY="65.0" onAction="#sendSelect" text="Abschicken" textAlignment="CENTER">
+
+                </Button>
+                      <TextField fx:id="isbnField" layoutX="406.0" layoutY="28.0" prefHeight="25.0" prefWidth="197.0" promptText="ISBN " />
+                      <TextField fx:id="teilgebieteField" layoutX="406.0" layoutY="113.0" prefHeight="25.0" prefWidth="197.0" promptText="Teilgebiete" />
+                      <TextField fx:id="verlagField" layoutX="406.0" layoutY="85.0" prefHeight="25.0" prefWidth="197.0" promptText="Verlag" />
+            <TextField alignment="CENTER" editable="false" layoutX="413.0" layoutY="2.0" prefHeight="25.0" prefWidth="184.0" text="Oder suchen Sie direkt nach:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></TextField>
+
+         </children>
+      </Pane>
+      <Pane fx:id="allPane" prefHeight="200.0" prefWidth="200.0" visible="false" GridPane.rowIndex="1">
+         <children>
+             <Button fx:id="selectBut" alignment="CENTER" contentDisplay="BOTTOM" layoutX="5.0" mnemonicParsing="false" onAction="#showSelect" prefHeight="25.0" prefWidth="60.0" text="Select" />
+         </children>
+      </Pane>
 
    </children>
 </GridPane>

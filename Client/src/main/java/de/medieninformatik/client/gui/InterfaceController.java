@@ -6,16 +6,11 @@ import de.medieninformatik.common.query.Select;
 import jakarta.ws.rs.core.GenericType;
 import jakarta.ws.rs.core.Response;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import org.json.JSONObject;
-
-import java.io.IOException;
 
 import java.util.List;
 
@@ -31,27 +26,21 @@ public class InterfaceController {
 
     public TableView<Book> tableView;
 
-    public CheckBox selectTeilgebiet;
-
-    public CheckBox selectSeiten;
-
-    public CheckBox selectJahr;
-
-    public CheckBox selectVerlag;
-
-    public CheckBox selectISBN;
-
-    public CheckBox selectAutor;
-
-    public CheckBox selectTitel;
-
-    public CheckBox selectAll;
 
     public TextField deleteField;
     public TextField infotextfield;
     public TextField userInfoField;
     public TextField teilgebieteField;
     public TextField verlagField;
+    public RadioButton radioAll;
+    public RadioButton radioISBN;
+    public RadioButton radioTitel;
+    public RadioButton radioAutor;
+    public RadioButton radioVerlag;
+    public RadioButton radioSeiten;
+    public RadioButton radioTeilgebiet;
+    public RadioButton radioJahr;
+
 
 
     LogInController logInController = new LogInController();
@@ -60,7 +49,7 @@ public class InterfaceController {
 
 
 
-
+    public Pane allPane;
     public Pane updatePane;
 
     public Pane deletePane;
@@ -116,10 +105,12 @@ public class InterfaceController {
     public Pane selectPane;
 
 
+
     Alert alert = new Alert(Alert.AlertType.ERROR);
 
 
     public void showAdmin() {
+        allPane.setVisible(true);
         basePane.setVisible(true);
         selectBut.setVisible(true);
         adminPane.setVisible(true);
@@ -128,6 +119,14 @@ public class InterfaceController {
 
     }
 
+    public void showMinf() {
+        allPane.setVisible(true);
+        adminPane.setVisible(false);
+        setAll(new ActionEvent());
+        basePane.setVisible(true);
+        selectBut.setVisible(true);
+        userInfoField.setVisible(true);
+    }
     public void showInsert(ActionEvent actionEvent) {
 
         insertTitel.clear();
@@ -140,18 +139,9 @@ public class InterfaceController {
         updatePane.setVisible(false);
         deletePane.setVisible(false);
         insertPane.setVisible(true);
+        infotextfield.setVisible(false);
+        userInfoField.setVisible(false);
     }
-
-    public void showMinf() {
-
-        adminPane.setVisible(false);
-        setAll(new ActionEvent());
-        basePane.setVisible(true);
-        selectBut.setVisible(true);
-        userInfoField.setVisible(true);
-    }
-
-
     public void showSelect(ActionEvent actionEvent) {
 
         autorField.clear();
@@ -163,7 +153,35 @@ public class InterfaceController {
         updatePane.setVisible(false);
         deletePane.setVisible(false);
         selectPane.setVisible(true);
+        infotextfield.setVisible(false);
+        userInfoField.setVisible(false);
     }
+    public void showUpdate(ActionEvent actionEvent) {
+        selectPane.setVisible(false);
+        insertPane.setVisible(false);
+        deletePane.setVisible(false);
+        updateSetISBN.clear();
+        updateSetTitel.clear();
+        updateSetAutor.clear();
+        updateSetTeilgebiet.clear();
+        updateSetVerlag.clear();
+        updateSetErscheinungsjahr.clear();
+        updateSetSeitenzahl.clear();
+        updatePane.setVisible(true);
+        infotextfield.setVisible(false);
+        userInfoField.setVisible(false);
+    }
+    public void showDelete(ActionEvent actionEvent) {
+        selectPane.setVisible(false);
+        insertPane.setVisible(false);
+        updatePane.setVisible(false);
+        deleteField.clear();
+        deletePane.setVisible(true);
+        infotextfield.setVisible(false);
+        userInfoField.setVisible(false);
+    }
+
+
 
     public void sendSelect(ActionEvent actionEvent) {
 
@@ -171,15 +189,7 @@ public class InterfaceController {
         tableView.getItems().clear();
         String whereParam = "";
         String query = "";
-        /*if (isbnField.isVisible()){
-            if (isbnField.getText().isEmpty()) {
-                alert.setContentText("ISBN fehlt!");
-                alert.show();
-            } else {
-                whereParam = "isbn";
-                query = isbnField.getText();
-            }
-        }*/
+
         if (!isbnField.getText().isEmpty()) {
             whereParam = "isbn";
             query = isbnField.getText();
@@ -212,49 +222,57 @@ public class InterfaceController {
 
         var sl = new StringJoiner(", ");
 
-        if (selectISBN.isSelected()) {
+
+        if (radioISBN.isSelected()) {
             sl.add("ISBN");
             isbn.setCellValueFactory(new PropertyValueFactory<>("Isbn"));
             tableView.getColumns().add(isbn);
         }
 
-        if (selectTitel.isSelected()) {
+
+
+        if (radioTitel.isSelected()) {
             sl.add("Titel");
             titel.setCellValueFactory(new PropertyValueFactory<>("Titel"));
             tableView.getColumns().add(titel);
         }
 
-        if (selectAutor.isSelected()) {
+
+        if (radioAutor.isSelected()) {
             sl.add("Autor");
             autor.setCellValueFactory(new PropertyValueFactory<>("Autor"));
             tableView.getColumns().add(autor);
         }
 
-        if (selectVerlag.isSelected()) {
+        if (radioVerlag.isSelected()) {
             sl.add("Verlag");
             verlag.setCellValueFactory(new PropertyValueFactory<>("Verlag"));
             tableView.getColumns().add(verlag);
         }
 
-        if (selectTeilgebiet.isSelected()) {
+
+        if (radioTeilgebiet.isSelected()) {
             sl.add("Teilgebiet");
             teilgebiet.setCellValueFactory(new PropertyValueFactory<>("Teilgebiet"));
             tableView.getColumns().add(teilgebiet);
         }
 
-        if (selectJahr.isSelected()) {
+
+
+        if (radioJahr.isSelected()) {
             sl.add("Erscheinungsjahr");
             erscheinungsjahr.setCellValueFactory(new PropertyValueFactory<>("Erscheinungsjahr"));
             tableView.getColumns().add(erscheinungsjahr);
         }
 
-        if (selectSeiten.isSelected()) {
+
+        if (radioSeiten.isSelected()) {
             sl.add("Seitenzahl");
             seitenzahl.setCellValueFactory(new PropertyValueFactory<>("Seitenzahl"));
             tableView.getColumns().add(seitenzahl);
         }
 
-        if (selectAll.isSelected()) {
+        if (radioAll.isSelected()) {
             select = "*";
             isbn.setCellValueFactory(new PropertyValueFactory<>("isbn"));
             tableView.getColumns().add(isbn);
@@ -279,7 +297,7 @@ public class InterfaceController {
         Select.toJSON(pick);
         JSONObject jsonObject = Select.getJsonObject();
         System.out.println(jsonObject);
-        Response r = restClient.postSelect(jsonObject, "/database/select");
+        Response r = restClient.postSelect(jsonObject, "/informatik/select");
         restClient.status(r);
         List<Book> result = r.readEntity(new GenericType<>() {});
         for (int i = 0; i < result.size(); i++) {
@@ -293,21 +311,18 @@ public class InterfaceController {
         teilgebieteField.clear();
 
     }
-
-
     public void sendUpdate(ActionEvent actionEvent) {
         String update = getString(updateSetISBN, updateSetTitel, updateSetAutor, updateSetTeilgebiet, updateSetVerlag, updateSetErscheinungsjahr,updateSetSeitenzahl);
         String whereParam = null;
 
         if (updateWhereColumnField.getText().isEmpty()) {
-            alert.setContentText("WHERE Condition darf nicht leer sein!");
             alert.show();
         }
         else {
             whereParam = updateWhereColumnField.getText();
         }
 
-        Response r = restClient.postUpdate(update, whereParam, "/database/update");
+        Response r = restClient.postUpdate(update, whereParam, "/informatik/update");
         restClient.status(r);
         sendSelect(actionEvent);
         updateSetISBN.clear();
@@ -319,28 +334,14 @@ public class InterfaceController {
         updateSetSeitenzahl.clear();
         updatePane.setVisible(false);
     }
-
-    private String getString(TextField tf1, TextField tf2, TextField tf3, TextField tf4, TextField tf5, TextField tf6, TextField tf7) {
-        var sj = new StringJoiner(", ", "", "");
-        if (!tf1.getText().isEmpty()) sj.add("ISBN='" + tf1.getText() + "'");
-        if (!tf2.getText().isEmpty()) sj.add("Titel='" + tf2.getText() + "'");
-        if (!tf3.getText().isEmpty()) sj.add("Autor='" + tf3.getText() + "'");
-        if (!tf4.getText().isEmpty()) sj.add("Teilgebiet='" + tf4.getText() + "'");
-        if (!tf5.getText().isEmpty()) sj.add("Verlag='" + tf5.getText() + "'");
-        if (!tf6.getText().isEmpty()) sj.add("Erscheinungsjahr='" + tf6.getText() + "'");
-        if (!tf7.getText().isEmpty()) sj.add("Seitenzahl='" + tf7.getText() + "'");
-        return sj.toString();
-    }
-
     public void sendDelete(ActionEvent actionEvent) {
 
         if (deleteField.getText().isEmpty()) {
-            alert.setContentText("Delete Condition darf nicht leer sein!");
             alert.show();
         }
         else {
             String query = deleteField.getText();
-            Response r = restClient.putDelete(query, "/database/delete");
+            Response r = restClient.putDelete(query, "/informatik/delete");
             restClient.status(r);
         }
         sendSelect(actionEvent);
@@ -348,36 +349,9 @@ public class InterfaceController {
         deletePane.setVisible(false);
     }
 
-    public void showUpdate(ActionEvent actionEvent) {
-        selectPane.setVisible(false);
-        insertPane.setVisible(false);
-        deletePane.setVisible(false);
-        updateSetISBN.clear();
-        updateSetTitel.clear();
-        updateSetAutor.clear();
-        updateSetTeilgebiet.clear();
-        updateSetVerlag.clear();
-        updateSetErscheinungsjahr.clear();
-        updateSetSeitenzahl.clear();
-        updatePane.setVisible(true);
-    }
 
-    public void removeAll(ActionEvent actionEvent) {
-        selectAll.setSelected(false);
-    }
 
-    public void setAll(ActionEvent actionEvent) {
-        selectAutor.setSelected(false);
-        selectISBN.setSelected(false);
-        selectTitel.setSelected(false);
-        selectVerlag.setSelected(false);
-        selectSeiten.setSelected(false);
-        selectTeilgebiet.setSelected(false);
-        selectJahr.setSelected(false);
-        selectAll.setSelected(true);
-    }
-
-    public void sendInsert(ActionEvent actionEvent) {
+    public void insert(ActionEvent actionEvent) {
         Book newBook = new Book();
         if (
                 insertISBN.getText().isEmpty() ||
@@ -388,7 +362,6 @@ public class InterfaceController {
                         insertSeitenzahl.getText().isEmpty() ||
                         insertTeilgebiet.getText().isEmpty()
         ) {
-            alert.setContentText("Es müssen alle Felder ausgefüllt werden!");
             alert.show();
         }
         else {
@@ -401,7 +374,7 @@ public class InterfaceController {
             newBook.setTeilgebiet(insertTeilgebiet.getText());
         }
 
-        Response r = restClient.putInsert(newBook, "/database/insertInto");
+        Response r = restClient.putInsert(newBook, "/informatik/insert");
         restClient.status(r);
         sendSelect(actionEvent);
         insertISBN.clear();
@@ -414,11 +387,41 @@ public class InterfaceController {
         insertPane.setVisible(false);
     }
 
-    public void showDelete(ActionEvent actionEvent) {
-        selectPane.setVisible(false);
-        insertPane.setVisible(false);
-        updatePane.setVisible(false);
-        deleteField.clear();
-        deletePane.setVisible(true);
+
+
+
+
+    public void removeAll(ActionEvent actionEvent) {
+
+        radioAll.setSelected(false);
     }
+
+    public void setAll(ActionEvent actionEvent) {
+
+
+        radioAll.setSelected(true);
+        radioAutor.setSelected(false);
+        radioISBN.setSelected(false);
+        radioTitel.setSelected(false);
+        radioVerlag.setSelected(false);
+        radioSeiten.setSelected(false);
+        radioTeilgebiet.setSelected(false);
+        radioJahr.setSelected(false);
+
+    }
+
+
+
+    private String getString(TextField field1, TextField field2, TextField field3, TextField field4, TextField field5, TextField field6, TextField field7) {
+        var sj = new StringJoiner(", ", "", "");
+        if (!field1.getText().isEmpty()) sj.add("ISBN='" + field1.getText() + "'");
+        if (!field2.getText().isEmpty()) sj.add("Titel='" + field2.getText() + "'");
+        if (!field3.getText().isEmpty()) sj.add("Autor='" + field3.getText() + "'");
+        if (!field4.getText().isEmpty()) sj.add("Teilgebiet='" + field4.getText() + "'");
+        if (!field5.getText().isEmpty()) sj.add("Verlag='" + field5.getText() + "'");
+        if (!field6.getText().isEmpty()) sj.add("Erscheinungsjahr='" + field6.getText() + "'");
+        if (!field7.getText().isEmpty()) sj.add("Seitenzahl='" + field7.getText() + "'");
+        return sj.toString();
+    }
+
 }

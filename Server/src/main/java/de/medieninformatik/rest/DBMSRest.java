@@ -15,7 +15,7 @@ import java.sql.Connection;
  */
 //TODO funktionen umbenennen und evtl abändern
 
-@Path("database")
+@Path("informatik")
 public class DBMSRest {
 
 
@@ -70,7 +70,7 @@ public class DBMSRest {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("insertInto")
+    @Path("insert")
     public Response insertData(Book book) {
         Boolean result = DBMSBib.insertData(book);
         return Response.ok(result).build();
