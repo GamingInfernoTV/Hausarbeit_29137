@@ -122,10 +122,10 @@ public class InterfaceController {
     public void showMinf() {
         allPane.setVisible(true);
         adminPane.setVisible(false);
-        setAll(new ActionEvent());
         basePane.setVisible(true);
         selectBut.setVisible(true);
         userInfoField.setVisible(true);
+        setAll(new ActionEvent());
     }
     public void showInsert(ActionEvent actionEvent) {
 

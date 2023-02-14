@@ -19,4 +19,5 @@ module de.medieninformatik.client {
     opens de.medieninformatik.client to jakarta.ws.rs;
     opens de.medieninformatik.client.gui to javafx.fxml;
     exports de.medieninformatik.client.gui;
+    exports de.medieninformatik.client.rest;
 }

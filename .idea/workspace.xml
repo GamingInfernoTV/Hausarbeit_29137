@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a2d1ee38-3417-4d5c-a3d2-df1213807c5e" name="Changes" comment="Version Umbenannt 3.0">
+    <list default="true" id="a2d1ee38-3417-4d5c-a3d2-df1213807c5e" name="Changes" comment="Version Umbenannt 4.0">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/main/java/de/medieninformatik/client/gui/InterfaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/de/medieninformatik/client/gui/InterfaceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/main/resources/Interface.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/resources/Interface.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/java/de/medieninformatik/rest/DBMSRest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/de/medieninformatik/rest/DBMSRest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +150,7 @@
       <recent name="C:\Users\Darwin\IdeaProjects\Hausarbeit_29137\Server\src\main\java\de\medieninformatik\DBMSSql" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Hausarbeit_29137:Client [run]">
+  <component name="RunManager" selected="Gradle.Hausarbeit_29137:Server [run]">
     <configuration name="Hausarbeit_29137:Client [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -245,7 +244,7 @@
       <workItem from="1676310949996" duration="1922000" />
       <workItem from="1676312881480" duration="14417000" />
       <workItem from="1676329630989" duration="458000" />
-      <workItem from="1676330098496" duration="2252000" />
+      <workItem from="1676330098496" duration="3093000" />
     </task>
     <task id="LOCAL-00001" summary="Version Umbenannt 1.0">
       <created>1676305891534</created>
@@ -268,7 +267,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676322946813</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Version Umbenannt 3.0">
+      <created>1676332707235</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1676332707235</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
