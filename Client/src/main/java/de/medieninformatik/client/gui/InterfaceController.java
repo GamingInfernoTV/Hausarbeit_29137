@@ -300,8 +300,7 @@ public class InterfaceController {
         Response r = restClient.postSelect(jsonObject, "/informatik/select");
         restClient.status(r);
         List<Book> result = r.readEntity(new GenericType<>() {});
-        for (int i = 0; i < result.size(); i++) {
-            Book book = result.get(i);
+        for (Book book : result) {
             tableView.getItems().add(book);
         }
 
