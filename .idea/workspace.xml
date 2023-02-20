@@ -4,22 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a2d1ee38-3417-4d5c-a3d2-df1213807c5e" name="Changes" comment="Version Umbenannt 5.0">
+    <list default="true" id="a2d1ee38-3417-4d5c-a3d2-df1213807c5e" name="Changes" comment="Version Umbenannt 5.5">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/main/java/de/medieninformatik/client/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/de/medieninformatik/client/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/main/java/de/medieninformatik/client/gui/Interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/de/medieninformatik/client/gui/Interface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/main/java/de/medieninformatik/client/gui/InterfaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/de/medieninformatik/client/gui/InterfaceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/main/java/de/medieninformatik/client/gui/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/de/medieninformatik/client/gui/LogInController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/main/java/de/medieninformatik/client/rest/RestClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/de/medieninformatik/client/rest/RestClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/main/resources/Interface.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/resources/Interface.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/src/main/java/de/medieninformatik/common/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/de/medieninformatik/common/Login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Common/src/main/java/de/medieninformatik/common/library/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/de/medieninformatik/common/library/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/src/main/java/de/medieninformatik/common/query/Select.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/de/medieninformatik/common/query/Select.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/src/main/java/de/medieninformatik/common/query/Update.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/de/medieninformatik/common/query/Update.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/java/de/medieninformatik/database/DBMSBib.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/de/medieninformatik/database/DBMSBib.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/java/de/medieninformatik/rest/DBMSRest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/de/medieninformatik/rest/DBMSRest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/java/de/medieninformatik/server/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/de/medieninformatik/server/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/main/java/de/medieninformatik/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/de/medieninformatik/server/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -259,6 +251,8 @@
       <workItem from="1676330098496" duration="3093000" />
       <workItem from="1676333483516" duration="22193000" />
       <workItem from="1676816603778" duration="3610000" />
+      <workItem from="1676908622459" duration="1956000" />
+      <workItem from="1676925444626" duration="1335000" />
     </task>
     <task id="LOCAL-00001" summary="Version Umbenannt 1.0">
       <created>1676305891534</created>
@@ -295,11 +289,29 @@
       <option name="project" value="LOCAL" />
       <updated>1676333790775</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Version Umbenannt 5.4">
+      <created>1676898091326</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1676898091326</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -321,6 +333,11 @@
             </State>
           </value>
         </entry>
+        <entry key="a645b0b5-e563-4ece-ba52-f3f0a12db36a">
+          <value>
+            <State />
+          </value>
+        </entry>
       </map>
     </option>
   </component>
@@ -329,6 +346,8 @@
     <MESSAGE value="Version Umbenannt 2.0" />
     <MESSAGE value="Version Umbenannt 3.0" />
     <MESSAGE value="Version Umbenannt 5.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version Umbenannt 5.0" />
+    <MESSAGE value="Version Umbenannt 5.4" />
+    <MESSAGE value="Version Umbenannt 5.5" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version Umbenannt 5.5" />
   </component>
 </project>

@@ -11,7 +11,7 @@ import java.io.IOException;
  * @date 30.11.2023
  * @author Carolin Baum m29137
  *
- * In der Klasse "Interface" wird das Loginfenster aufgerufen und somit auch die Login.fxml
+ * In der Klasse "Interface" wird das Loginfenster aufgerufen und somit auch die "Login.fxml".
  */
 //h
 public class Interface extends Application {

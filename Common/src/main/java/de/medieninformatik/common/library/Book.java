@@ -77,45 +77,59 @@ public class Book {
      *
      */
     public void setTitel(String titel) {                                        //Setter: String für den Titel
+
         this.titel = titel;
     }
     public String getTitel() {                                                  //Getter: gibt Titel aus
+
         return titel;
     }
     public void setAutor(String autor) {                                        //Setter: String für den Autor
+
         this.autor = autor;
     }
     public String getAutor() {                                                  //Getter: gibt Autor aus
+
         return autor;
     }
     public void setVerlag(String verlag) {                                      //Setter: String für den Verlag
+
         this.verlag = verlag;
     }
     public String getVerlag() {                                                 //Getter: gibt Verlag aus
+
         return verlag;
     }
     public void setIsbn(String isbn) {                                          //Setter: String für die ISBN
+
         this.isbn = isbn;
     }
     public String getIsbn() {                                                   //Getter: gibt ISBN aus
+
         return isbn;
     }
     public void setErscheinungsjahr(int erscheinungsjahr) {                     //Setter: String für das Erscheinungsjahr
+
         this.erscheinungsjahr = erscheinungsjahr;
     }
     public int getErscheinungsjahr() {                                          //Getter: gibt Erscheinungsjahr aus
+
         return erscheinungsjahr;
     }
     public void setSeitenzahl(int seitenzahl) {                                 //Setter: String für die Seitenzahl
+
         this.seitenzahl = seitenzahl;
     }
     public int getSeitenzahl() {                                                //Getter: gibt Seitenzahl aus
+
         return seitenzahl;
     }
     public void setTeilgebiet(String teilgebiet) {                              //Setter: String für das Teilgebiet
+
         this.teilgebiet = teilgebiet;
     }
     public String getTeilgebiet() {                                             //Getter: gibt Teilgebiet aus
+
         return teilgebiet;
     }
 

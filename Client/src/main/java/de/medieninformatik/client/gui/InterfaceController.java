@@ -24,15 +24,43 @@ import java.util.StringJoiner;
  */
 
 public class InterfaceController {
+    public GridPane structure;
 
     public TableView<Book> tableView;
 
+    public Pane all;
+    public Pane update;
+    public Pane insert;
+    public Pane delete;
+    public Pane select;
+    public Pane admin;
 
-    public TextField deleteFieldCheckISBN;
-    public TextField infotextfield;
-    public TextField userInfoField;
-    public TextField teilgebieteField;
-    public TextField titelField;
+    public TextField isbnTextField;
+    public TextField autorTextField;
+
+    public TextField deleteTextFieldCheckISBN;
+    public TextField updateTextFieldCheckISBN;
+    public TextField infotextTextField;
+    public TextField userInfoTextField;
+    public TextField teilgebieteTextField;
+    public TextField titelTextField;
+
+    public TextField updateTextFieldSeitenzahl;
+    public TextField updateTextFieldErscheinungsjahr;
+    public TextField updateTextFieldVerlag;
+    public TextField updateTextFieldTeilgebiet;
+    public TextField updateTextFieldAutor;
+    public TextField updateTextFieldTitel;
+    public TextField updateTextFieldISBN;
+
+    public TextField insertTextFieldTitel;
+    public TextField insertTextFieldAutor;
+    public TextField insertTextFieldTeilgebiet;
+    public TextField insertTextFieldISBN;
+    public TextField insertTextFieldVerlag;
+    public TextField insertTextFieldErscheinungsjahr;
+    public TextField insertTextFieldSeitenzahl;
+
     public RadioButton radioAll;
     public RadioButton radioISBN;
     public RadioButton radioTitel;
@@ -42,70 +70,15 @@ public class InterfaceController {
     public RadioButton radioTeilgebiet;
     public RadioButton radioJahr;
 
+    public Button deleteBut;
+    public Button updateBut;
+    public Button insertBut;
+    public Button selectBut;
 
 
     LogInController logInController = new LogInController();
 
     private final RestClient restClient = logInController.getRestClient();
-
-
-
-    public Pane allPane;
-    public Pane updatePane;
-
-    public Pane deletePane;
-
-    public TextField updateFieldCheckISBN;
-
-    public TextField updateSeitenzahl;
-
-    public TextField updateErscheinungsjahr;
-
-    public TextField updateVerlag;
-
-    public TextField updateTeilgebiet;
-
-    public TextField updateAutor;
-
-    public TextField updateTitel;
-
-    public TextField updateISBN;
-
-    public Button deleteBut;
-
-    public Button updateBut;
-
-    public Button insertBut;
-
-    public Button selectBut;
-
-    public TextField insertTitel;
-
-    public TextField insertAutor;
-
-    public TextField insertTeilgebiet;
-
-    public TextField insertISBN;
-
-    public TextField insertVerlag;
-
-    public TextField insertErscheinungsjahr;
-
-    public TextField insertSeitenzahl;
-
-    public Pane insertPane;
-
-    public GridPane basePane;
-
-    public Pane adminPane;
-
-    public TextField isbnField;
-
-    public TextField autorField;
-
-    public Pane selectPane;
-
-
 
     Alert alert = new Alert(Alert.AlertType.ERROR);
 
@@ -113,11 +86,11 @@ public class InterfaceController {
      * In der Methode "showAdmin" wird geregelt, welche Inhalte des Interfaces für den Adminuser sichtbar sein sollen.
      */
     public void showAdmin() {
-        allPane.setVisible(true);
-        basePane.setVisible(true);
+        all.setVisible(true);
+        structure.setVisible(true);
         selectBut.setVisible(true);
-        adminPane.setVisible(true);
-        infotextfield.setVisible(true);
+        admin.setVisible(true);
+        infotextTextField.setVisible(true);
         setAll(new ActionEvent());
 
     }
@@ -126,11 +99,11 @@ public class InterfaceController {
      * In der Methode "showMinf" wird geregelt, welche Inhalte des Interfaces für den Gastuser sichtbar sein sollen.
      */
     public void showMinf() {
-        allPane.setVisible(true);
-        adminPane.setVisible(false);
-        basePane.setVisible(true);
+        all.setVisible(true);
+        admin.setVisible(false);
+        structure.setVisible(true);
         selectBut.setVisible(true);
-        userInfoField.setVisible(true);
+        userInfoTextField.setVisible(true);
         setAll(new ActionEvent());
     }
 
@@ -140,17 +113,17 @@ public class InterfaceController {
      */
     public void visibleSelect(ActionEvent actionEvent) {
 
-        autorField.clear();
-        isbnField.clear();
-        teilgebieteField.clear();
-        titelField.clear();
-        basePane.setVisible(true);
-        insertPane.setVisible(false);
-        updatePane.setVisible(false);
-        deletePane.setVisible(false);
-        selectPane.setVisible(true);
-        infotextfield.setVisible(false);
-        userInfoField.setVisible(false);
+        autorTextField.clear();
+        isbnTextField.clear();
+        teilgebieteTextField.clear();
+        titelTextField.clear();
+        structure.setVisible(true);
+        insert.setVisible(false);
+        update.setVisible(false);
+        delete.setVisible(false);
+        select.setVisible(true);
+        infotextTextField.setVisible(false);
+        userInfoTextField.setVisible(false);
     }
 
     /**
@@ -159,18 +132,18 @@ public class InterfaceController {
      */
     public void visibleInsert(ActionEvent actionEvent) {
 
-        insertTitel.clear();
-        insertSeitenzahl.clear();
-        insertISBN.clear();
-        insertVerlag.clear();
-        insertErscheinungsjahr.clear();
-        insertAutor.clear();
-        selectPane.setVisible(false);
-        updatePane.setVisible(false);
-        deletePane.setVisible(false);
-        insertPane.setVisible(true);
-        infotextfield.setVisible(false);
-        userInfoField.setVisible(false);
+        insertTextFieldTitel.clear();
+        insertTextFieldSeitenzahl.clear();
+        insertTextFieldISBN.clear();
+        insertTextFieldVerlag.clear();
+        insertTextFieldErscheinungsjahr.clear();
+        insertTextFieldAutor.clear();
+        select.setVisible(false);
+        update.setVisible(false);
+        delete.setVisible(false);
+        insert.setVisible(true);
+        infotextTextField.setVisible(false);
+        userInfoTextField.setVisible(false);
     }
 
     /**
@@ -178,19 +151,19 @@ public class InterfaceController {
      * @param actionEvent Parameter für das Action Event
      */
     public void visibleUpdate(ActionEvent actionEvent) {
-        selectPane.setVisible(false);
-        insertPane.setVisible(false);
-        deletePane.setVisible(false);
-        updateISBN.clear();
-        updateTitel.clear();
-        updateAutor.clear();
-        updateTeilgebiet.clear();
-        updateVerlag.clear();
-        updateErscheinungsjahr.clear();
-        updateSeitenzahl.clear();
-        updatePane.setVisible(true);
-        infotextfield.setVisible(false);
-        userInfoField.setVisible(false);
+        select.setVisible(false);
+        insert.setVisible(false);
+        delete.setVisible(false);
+        updateTextFieldISBN.clear();
+        updateTextFieldTitel.clear();
+        updateTextFieldAutor.clear();
+        updateTextFieldTeilgebiet.clear();
+        updateTextFieldVerlag.clear();
+        updateTextFieldErscheinungsjahr.clear();
+        updateTextFieldSeitenzahl.clear();
+        update.setVisible(true);
+        infotextTextField.setVisible(false);
+        userInfoTextField.setVisible(false);
     }
 
     /**
@@ -198,13 +171,13 @@ public class InterfaceController {
      * @param actionEvent Parameter für das Action Event
      */
     public void visibleDelete(ActionEvent actionEvent) {
-        selectPane.setVisible(false);
-        insertPane.setVisible(false);
-        updatePane.setVisible(false);
-        deleteFieldCheckISBN.clear();
-        deletePane.setVisible(true);
-        infotextfield.setVisible(false);
-        userInfoField.setVisible(false);
+        select.setVisible(false);
+        insert.setVisible(false);
+        update.setVisible(false);
+        deleteTextFieldCheckISBN.clear();
+        delete.setVisible(true);
+        infotextTextField.setVisible(false);
+        userInfoTextField.setVisible(false);
     }
 
 
@@ -221,23 +194,23 @@ public class InterfaceController {
         String whereParam = "";
         String query = "";
 
-        if (!isbnField.getText().isEmpty()) {
+        if (!isbnTextField.getText().isEmpty()) {
             whereParam = "isbn";
-            query = isbnField.getText();
+            query = isbnTextField.getText();
         }
-        if (!autorField.getText().isEmpty()){
+        if (!autorTextField.getText().isEmpty()){
             whereParam = "autor";
-            query = autorField.getText();
+            query = autorTextField.getText();
 
         }
-        if (!titelField.getText().isEmpty()) {
+        if (!titelTextField.getText().isEmpty()) {
             whereParam = "titel";
-            query = titelField.getText();
+            query = titelTextField.getText();
 
         }
-        if (!teilgebieteField.getText().isEmpty()) {
+        if (!teilgebieteTextField.getText().isEmpty()) {
             whereParam = "teilgebiet";
-            query = teilgebieteField.getText();
+            query = teilgebieteTextField.getText();
         }
 
 
@@ -327,7 +300,6 @@ public class InterfaceController {
         Select pick = new Select(select, whereParam, query);
         Select.toJSON(pick);
         JSONObject jsonObject = Select.getJsonObject();
-        System.out.println(jsonObject);
         Response r = restClient.putSelect(jsonObject, "/informatik/select");
         restClient.status(r);
         List<Book> result = r.readEntity(new GenericType<>() {});
@@ -335,10 +307,10 @@ public class InterfaceController {
             tableView.getItems().add(book);
         }
 
-        autorField.clear();
-        isbnField.clear();
-        titelField.clear();
-        teilgebieteField.clear();
+        autorTextField.clear();
+        isbnTextField.clear();
+        titelTextField.clear();
+        teilgebieteTextField.clear();
 
     }
 
@@ -348,27 +320,27 @@ public class InterfaceController {
      * @param actionEvent Parameter für das Action Event
      */
     public void update(ActionEvent actionEvent) {
-        String update = getString(updateISBN, updateTitel, updateAutor, updateTeilgebiet, updateVerlag, updateErscheinungsjahr, updateSeitenzahl);
+        String update = getString(updateTextFieldISBN, updateTextFieldTitel, updateTextFieldAutor, updateTextFieldTeilgebiet, updateTextFieldVerlag, updateTextFieldErscheinungsjahr, updateTextFieldSeitenzahl);
         String whereParam = null;
 
-        if (updateFieldCheckISBN.getText().isEmpty()) {
+        if (updateTextFieldCheckISBN.getText().isEmpty()) {
             alert.show();
         }
         else {
-            whereParam = updateFieldCheckISBN.getText();
+            whereParam = updateTextFieldCheckISBN.getText();
         }
 
         Response r = restClient.putUpdate(update, whereParam, "/informatik/update");
         restClient.status(r);
         select(actionEvent);
-        updateISBN.clear();
-        updateTitel.clear();
-        updateAutor.clear();
-        updateTeilgebiet.clear();
-        updateVerlag.clear();
-        updateErscheinungsjahr.clear();
-        updateSeitenzahl.clear();
-        updatePane.setVisible(false);
+        updateTextFieldISBN.clear();
+        updateTextFieldTitel.clear();
+        updateTextFieldAutor.clear();
+        updateTextFieldTeilgebiet.clear();
+        updateTextFieldVerlag.clear();
+        updateTextFieldErscheinungsjahr.clear();
+        updateTextFieldSeitenzahl.clear();
+        this.update.setVisible(false);
     }
 
     /**
@@ -377,17 +349,17 @@ public class InterfaceController {
      */
     public void delete(ActionEvent actionEvent) {
 
-        if (deleteFieldCheckISBN.getText().isEmpty()) {
+        if (deleteTextFieldCheckISBN.getText().isEmpty()) {
             alert.show();
         }
         else {
-            String query = deleteFieldCheckISBN.getText();
+            String query = deleteTextFieldCheckISBN.getText();
             Response r = restClient.putDelete(query, "/informatik/delete");
             restClient.status(r);
         }
         select(actionEvent);
-        deleteFieldCheckISBN.clear();
-        deletePane.setVisible(false);
+        deleteTextFieldCheckISBN.clear();
+        delete.setVisible(false);
     }
 
 
@@ -398,37 +370,37 @@ public class InterfaceController {
     public void insert(ActionEvent actionEvent) {
         Book newBook = new Book();
         if (
-                insertISBN.getText().isEmpty() ||
-                        insertTitel.getText().isEmpty() ||
-                        insertAutor.getText().isEmpty() ||
-                        insertVerlag.getText().isEmpty() ||
-                        insertErscheinungsjahr.getText().isEmpty() ||
-                        insertSeitenzahl.getText().isEmpty() ||
-                        insertTeilgebiet.getText().isEmpty()
+                insertTextFieldISBN.getText().isEmpty() ||
+                        insertTextFieldTitel.getText().isEmpty() ||
+                        insertTextFieldAutor.getText().isEmpty() ||
+                        insertTextFieldVerlag.getText().isEmpty() ||
+                        insertTextFieldErscheinungsjahr.getText().isEmpty() ||
+                        insertTextFieldSeitenzahl.getText().isEmpty() ||
+                        insertTextFieldTeilgebiet.getText().isEmpty()
         ) {
             alert.show();
         }
         else {
-            newBook.setIsbn(insertISBN.getText());
-            newBook.setTitel(insertTitel.getText());
-            newBook.setAutor(insertAutor.getText());
-            newBook.setVerlag(insertVerlag.getText());
-            newBook.setErscheinungsjahr(Integer.parseInt(insertErscheinungsjahr.getText()));
-            newBook.setSeitenzahl(Integer.parseInt(insertSeitenzahl.getText()));
-            newBook.setTeilgebiet(insertTeilgebiet.getText());
+            newBook.setIsbn(insertTextFieldISBN.getText());
+            newBook.setTitel(insertTextFieldTitel.getText());
+            newBook.setAutor(insertTextFieldAutor.getText());
+            newBook.setVerlag(insertTextFieldVerlag.getText());
+            newBook.setErscheinungsjahr(Integer.parseInt(insertTextFieldErscheinungsjahr.getText()));
+            newBook.setSeitenzahl(Integer.parseInt(insertTextFieldSeitenzahl.getText()));
+            newBook.setTeilgebiet(insertTextFieldTeilgebiet.getText());
         }
 
         Response r = restClient.putInsert(newBook, "/informatik/insert");
         restClient.status(r);
         select(actionEvent);
-        insertISBN.clear();
-        insertAutor.clear();
-        insertVerlag.clear();
-        insertTitel.clear();
-        insertTeilgebiet.clear();
-        insertErscheinungsjahr.clear();
-        insertSeitenzahl.clear();
-        insertPane.setVisible(false);
+        insertTextFieldISBN.clear();
+        insertTextFieldAutor.clear();
+        insertTextFieldVerlag.clear();
+        insertTextFieldTitel.clear();
+        insertTextFieldTeilgebiet.clear();
+        insertTextFieldErscheinungsjahr.clear();
+        insertTextFieldSeitenzahl.clear();
+        insert.setVisible(false);
     }
 
 //h

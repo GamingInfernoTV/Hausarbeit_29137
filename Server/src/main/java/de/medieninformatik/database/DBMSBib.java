@@ -183,7 +183,6 @@ public class DBMSBib {
     public synchronized Connection getConnection() {
         if (instance != null) {
             try {
-                //TODO (ganz am ende) admin, admin durch minf, prog3 ersetzen
                 connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "minf", "prog3");
             } catch (SQLException e) {
                 e.printStackTrace();

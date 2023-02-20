@@ -3,8 +3,11 @@ package de.medieninformatik.rest;
 import de.medieninformatik.common.library.Book;
 import de.medieninformatik.database.DBMSBib;
 import jakarta.ws.rs.*;
+import jakarta.ws.rs.client.Entity;
+import jakarta.ws.rs.core.EntityTag;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import org.json.JSONObject;
 
 import java.sql.Connection;
 
@@ -12,17 +15,15 @@ import java.sql.Connection;
  * @date 30.11.2023
  * @author Carolin Baum m29137
  *
+ * In der Klasse "DBMSRest" wird die Verbindung zwischen der Datenbank und der Funktionalität geschaffen.
  */
-//TODO Klasse kommentieren
+
 // TODO funktionen umbenennen und evtl abändern
 //h
 @Path("informatik")
 public class DBMSRest {
 
 
-    //public DatabaseRest() {
-        // TODO document why this constructor is empty
-   // }
 //TODO login abändern sodass überprüft wird ob user = teil der userklasse in common
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
@@ -43,7 +44,7 @@ public class DBMSRest {
             @PathParam("select") String select,
             @PathParam("where") String where,
             @PathParam("query") String query
-            ) {
+    ) {
         var result = DBMSBib.selectData(select, where, query);
         return Response.ok(result, MediaType.APPLICATION_JSON).build();
     }
