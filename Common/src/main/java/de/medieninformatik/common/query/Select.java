@@ -12,13 +12,14 @@ import org.json.JSONObject;
  *
  * In der Klasse "Select" wird die Select-Funktion implementiert. Mithilfe eines JSON-Objects werden die bearbeiteten Daten weitergegeben.
  */
-
+//h
 public class Select {
     String select;
     String whereParam;
     String query;
     private static JSONObject jsonObject;
     public static String json;
+    //h
 
     /**
      * In der Methode "Select" werden die Strings Select, WhereParam und query implementiert.

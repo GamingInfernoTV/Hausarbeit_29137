@@ -19,6 +19,7 @@ import java.util.logging.Logger;
  * In der Klasse "Server" wird der Server eingerichtet.
  */
 public class Server {
+    //h
     private static final Logger LOGGER = Logger.getLogger("org.glassfish");
 
     /**

@@ -71,7 +71,7 @@ public class DBMSBib {
                 sql += ";";
                 ResultSet result = statement.executeQuery(sql);
                 ResultSetMetaData resultMetaData = result.getMetaData();
-
+//h
                 while (result.next()) {
                     Book book = new Book();
                     JSONObject jsonObject = new JSONObject();

@@ -15,7 +15,7 @@ import java.sql.Connection;
  */
 //TODO Klasse kommentieren
 // TODO funktionen umbenennen und evtl abändern
-
+//h
 @Path("informatik")
 public class DBMSRest {
 

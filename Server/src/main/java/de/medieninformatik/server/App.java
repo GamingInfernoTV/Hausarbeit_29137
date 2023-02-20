@@ -12,7 +12,7 @@ import java.util.Set;
  *
  * In der Klasse "App" wird die Applikation erstellt.
  */
-
+//h
 public class App extends Application {
     private static final Set<Class<?>> classes = new HashSet<>();
 

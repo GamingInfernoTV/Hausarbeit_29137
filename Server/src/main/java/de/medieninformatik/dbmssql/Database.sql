@@ -1,6 +1,6 @@
 create database if not exists informatik;
 
-
+h
 create login 'minf'@'localhost' identified by 'prog3';
     grant INSERT, UPDATE, DELETE, SELECT on informatik.* to 'admin'@'localhost';
 

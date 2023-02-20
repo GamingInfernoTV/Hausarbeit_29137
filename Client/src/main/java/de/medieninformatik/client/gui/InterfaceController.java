@@ -431,7 +431,7 @@ public class InterfaceController {
         insertPane.setVisible(false);
     }
 
-
+//h
     /**
      * In der Methode "removeAll" wird implementiert, dass der "All" RadioButton im select-Befehl deaktiviert wird
      * (Wenn ein anderer RadioButton ausgewählt wird)

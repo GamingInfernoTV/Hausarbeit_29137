@@ -7,7 +7,7 @@ import java.util.Objects;
  * @author Carolin Baum m29137
  * In der Klasse "Login" wird der per Username und Passwort implementierte Login erstellt.
  */
-
+//h
 public class Login {
 
     String userName;

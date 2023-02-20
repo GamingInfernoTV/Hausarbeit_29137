@@ -18,7 +18,7 @@ public class Update {
     String whereISBN;
     private static JSONObject jsonObject;
     public static String json;
-
+//h
     /**
      * In der Methode "Update" werden die Strings Update und whereISBN implementiert
      * @param update Parameter für Update
