@@ -8,6 +8,7 @@ import java.util.*;
  * @date 30.11.2023
  * @author Carolin Baum m29137
  *
+ * In der Klasse Book werden die verschiedenen Spalten in der Datenbank festgelegt. Mithilfe eines JSONObjects werden die Spalten gefüllt.
  */
 
 public class Book {
@@ -19,7 +20,9 @@ public class Book {
     private int seitenzahl;
     private String teilgebiet;
 
-
+    /**
+     * In "Book" werden alle Inhalte der Tabelle auf null gesetzt.
+     */
     public Book() {
         titel = null;
         autor = null;
@@ -30,6 +33,10 @@ public class Book {
         teilgebiet = null;
     }
 
+    /**
+     * In der Methode "toString" werden Inhalte zu Strings hinzugefügt.
+     * @return gibt String wieder
+     */
     @Override
     public String toString() {
         var sj = new StringJoiner("; ", "Book<", ">");
@@ -43,6 +50,11 @@ public class Book {
         return sj.toString();
     }
 
+    /**
+     * In der Methode fromJSON wird die Tabelle gefüllt.
+     * @param jsonObject Parameter für das JSONObject
+     * @return gibt die Tabelle wieder
+     */
     public Book fromJSON(JSONObject jsonObject) {
         Book book = new Book();
         jsonObject.keySet().forEach(s -> {
@@ -60,60 +72,51 @@ public class Book {
         return book;
     }
 
-
-    public void setTitel(String titel) {
+    /**
+     * Verschiedene Setter und Getter, für den Inhalt der Tabelle
+     *
+     */
+    public void setTitel(String titel) {                                        //Setter: String für den Titel
         this.titel = titel;
     }
-
-    public void setAutor(String autor) {
-        this.autor = autor;
-    }
-
-    public void setVerlag(String verlag) {
-        this.verlag = verlag;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
-
-    public void setErscheinungsjahr(int erscheinungsjahr) {
-        this.erscheinungsjahr = erscheinungsjahr;
-    }
-
-    public void setSeitenzahl(int seitenzahl) {
-        this.seitenzahl = seitenzahl;
-    }
-
-    public void setTeilgebiet(String teilgebiet) {
-        this.teilgebiet = teilgebiet;
-    }
-
-    public String getTitel() {
+    public String getTitel() {                                                  //Getter: gibt Titel aus
         return titel;
     }
-
-    public String getAutor() {
+    public void setAutor(String autor) {                                        //Setter: String für den Autor
+        this.autor = autor;
+    }
+    public String getAutor() {                                                  //Getter: gibt Autor aus
         return autor;
     }
-
-    public String getVerlag() {
+    public void setVerlag(String verlag) {                                      //Setter: String für den Verlag
+        this.verlag = verlag;
+    }
+    public String getVerlag() {                                                 //Getter: gibt Verlag aus
         return verlag;
     }
-
-    public String getIsbn() {
+    public void setIsbn(String isbn) {                                          //Setter: String für die ISBN
+        this.isbn = isbn;
+    }
+    public String getIsbn() {                                                   //Getter: gibt ISBN aus
         return isbn;
     }
-
-    public int getErscheinungsjahr() {
+    public void setErscheinungsjahr(int erscheinungsjahr) {                     //Setter: String für das Erscheinungsjahr
+        this.erscheinungsjahr = erscheinungsjahr;
+    }
+    public int getErscheinungsjahr() {                                          //Getter: gibt Erscheinungsjahr aus
         return erscheinungsjahr;
     }
-
-    public int getSeitenzahl() {
+    public void setSeitenzahl(int seitenzahl) {                                 //Setter: String für die Seitenzahl
+        this.seitenzahl = seitenzahl;
+    }
+    public int getSeitenzahl() {                                                //Getter: gibt Seitenzahl aus
         return seitenzahl;
     }
-
-    public String getTeilgebiet() {
+    public void setTeilgebiet(String teilgebiet) {                              //Setter: String für das Teilgebiet
+        this.teilgebiet = teilgebiet;
+    }
+    public String getTeilgebiet() {                                             //Getter: gibt Teilgebiet aus
         return teilgebiet;
     }
+
 }

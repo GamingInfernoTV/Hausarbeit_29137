@@ -16,14 +16,14 @@ import java.util.logging.Logger;
  * @date 30.01.2023
  * @author Carolin Baum m29137
  *
- * Server Klasse, sie dient zur Erstellung des Servers
+ * In der Klasse "Server" wird der Server eingerichtet.
  */
 public class Server {
     private static final Logger LOGGER = Logger.getLogger("org.glassfish");
 
     /**
-     * Methode zum Starten des {@link Server} auf der übergebenen URL
-     * @param uri die übergebene URL auf welcher der Server läuft
+     * In der Methode "start" wird der Server gestartet.
+     * @param uri Parameter für die URL
      */
     public static void start(String uri) {
         try {

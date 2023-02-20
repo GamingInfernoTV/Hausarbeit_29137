@@ -13,7 +13,8 @@ import java.sql.Connection;
  * @author Carolin Baum m29137
  *
  */
-//TODO funktionen umbenennen und evtl abändern
+//TODO Klasse kommentieren
+// TODO funktionen umbenennen und evtl abändern
 
 @Path("informatik")
 public class DBMSRest {

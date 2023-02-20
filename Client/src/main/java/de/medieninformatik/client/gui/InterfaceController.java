@@ -20,6 +20,7 @@ import java.util.StringJoiner;
  * @date 30.11.2023
  * @author Carolin Baum m29137
  *
+ * In der Klasse "InterfaceController" werden die Funktionen des Interfaces implementiert.
  */
 
 public class InterfaceController {
@@ -27,11 +28,11 @@ public class InterfaceController {
     public TableView<Book> tableView;
 
 
-    public TextField deleteField;
+    public TextField deleteFieldCheckISBN;
     public TextField infotextfield;
     public TextField userInfoField;
     public TextField teilgebieteField;
-    public TextField verlagField;
+    public TextField titelField;
     public RadioButton radioAll;
     public RadioButton radioISBN;
     public RadioButton radioTitel;
@@ -54,21 +55,21 @@ public class InterfaceController {
 
     public Pane deletePane;
 
-    public TextField updateWhereColumnField;
+    public TextField updateFieldCheckISBN;
 
-    public TextField updateSetSeitenzahl;
+    public TextField updateSeitenzahl;
 
-    public TextField updateSetErscheinungsjahr;
+    public TextField updateErscheinungsjahr;
 
-    public TextField updateSetVerlag;
+    public TextField updateVerlag;
 
-    public TextField updateSetTeilgebiet;
+    public TextField updateTeilgebiet;
 
-    public TextField updateSetAutor;
+    public TextField updateAutor;
 
-    public TextField updateSetTitel;
+    public TextField updateTitel;
 
-    public TextField updateSetISBN;
+    public TextField updateISBN;
 
     public Button deleteBut;
 
@@ -108,7 +109,9 @@ public class InterfaceController {
 
     Alert alert = new Alert(Alert.AlertType.ERROR);
 
-
+    /**
+     * In der Methode "showAdmin" wird geregelt, welche Inhalte des Interfaces für den Adminuser sichtbar sein sollen.
+     */
     public void showAdmin() {
         allPane.setVisible(true);
         basePane.setVisible(true);
@@ -119,6 +122,9 @@ public class InterfaceController {
 
     }
 
+    /**
+     * In der Methode "showMinf" wird geregelt, welche Inhalte des Interfaces für den Gastuser sichtbar sein sollen.
+     */
     public void showMinf() {
         allPane.setVisible(true);
         adminPane.setVisible(false);
@@ -127,7 +133,31 @@ public class InterfaceController {
         userInfoField.setVisible(true);
         setAll(new ActionEvent());
     }
-    public void showInsert(ActionEvent actionEvent) {
+
+    /**
+     * In der Methode "visibleSelect" wird geregelt, welche Inhalte des Interfaces für den Select-Befehl sichtbar sein sollen.
+     * @param actionEvent Parameter für das Action Event
+     */
+    public void visibleSelect(ActionEvent actionEvent) {
+
+        autorField.clear();
+        isbnField.clear();
+        teilgebieteField.clear();
+        titelField.clear();
+        basePane.setVisible(true);
+        insertPane.setVisible(false);
+        updatePane.setVisible(false);
+        deletePane.setVisible(false);
+        selectPane.setVisible(true);
+        infotextfield.setVisible(false);
+        userInfoField.setVisible(false);
+    }
+
+    /**
+     * In der Methode "visibleInsert" wird geregelt, welche Inhalte des Interfaces für den Insert-Befehl sichtbar sein sollen.
+     * @param actionEvent Parameter für das Action Event
+     */
+    public void visibleInsert(ActionEvent actionEvent) {
 
         insertTitel.clear();
         insertSeitenzahl.clear();
@@ -142,48 +172,49 @@ public class InterfaceController {
         infotextfield.setVisible(false);
         userInfoField.setVisible(false);
     }
-    public void showSelect(ActionEvent actionEvent) {
 
-        autorField.clear();
-        isbnField.clear();
-        teilgebieteField.clear();
-        verlagField.clear();
-        basePane.setVisible(true);
-        insertPane.setVisible(false);
-        updatePane.setVisible(false);
-        deletePane.setVisible(false);
-        selectPane.setVisible(true);
-        infotextfield.setVisible(false);
-        userInfoField.setVisible(false);
-    }
-    public void showUpdate(ActionEvent actionEvent) {
+    /**
+     * In der Methode "visibleUpdate" wird geregelt, welche Inhalte des Interfaces für den Update-Befehl sichtbar sein sollen.
+     * @param actionEvent Parameter für das Action Event
+     */
+    public void visibleUpdate(ActionEvent actionEvent) {
         selectPane.setVisible(false);
         insertPane.setVisible(false);
         deletePane.setVisible(false);
-        updateSetISBN.clear();
-        updateSetTitel.clear();
-        updateSetAutor.clear();
-        updateSetTeilgebiet.clear();
-        updateSetVerlag.clear();
-        updateSetErscheinungsjahr.clear();
-        updateSetSeitenzahl.clear();
+        updateISBN.clear();
+        updateTitel.clear();
+        updateAutor.clear();
+        updateTeilgebiet.clear();
+        updateVerlag.clear();
+        updateErscheinungsjahr.clear();
+        updateSeitenzahl.clear();
         updatePane.setVisible(true);
         infotextfield.setVisible(false);
         userInfoField.setVisible(false);
     }
-    public void showDelete(ActionEvent actionEvent) {
+
+    /**
+     * In der Methode "visibleDelete" wird geregelt, welche Inhalte des Interfaces für den Delete-Befehl sichtbar sein sollen.
+     * @param actionEvent Parameter für das Action Event
+     */
+    public void visibleDelete(ActionEvent actionEvent) {
         selectPane.setVisible(false);
         insertPane.setVisible(false);
         updatePane.setVisible(false);
-        deleteField.clear();
+        deleteFieldCheckISBN.clear();
         deletePane.setVisible(true);
         infotextfield.setVisible(false);
         userInfoField.setVisible(false);
     }
 
 
-
-    public void sendSelect(ActionEvent actionEvent) {
+    /**
+     * In der Methode "select" wird die Funktion hinter dem Select-Befehl implementiert.
+     * Mit Radiobuttons kann man filtern, welche Inhalte (Spalten) man aus der Datenbank einsehen möchte.
+     * Zusätzlich kann man über vier Textfelder direkt nach ISBN, Autor, Titel und/oder Teilgebiet suchen
+     * @param actionEvent Parameter für das Action Event
+     */
+    public void select(ActionEvent actionEvent) {
 
         tableView.getColumns().clear();
         tableView.getItems().clear();
@@ -199,9 +230,9 @@ public class InterfaceController {
             query = autorField.getText();
 
         }
-        if (!verlagField.getText().isEmpty()) {
-            whereParam = "verlag";
-            query = verlagField.getText();
+        if (!titelField.getText().isEmpty()) {
+            whereParam = "titel";
+            query = titelField.getText();
 
         }
         if (!teilgebieteField.getText().isEmpty()) {
@@ -297,7 +328,7 @@ public class InterfaceController {
         Select.toJSON(pick);
         JSONObject jsonObject = Select.getJsonObject();
         System.out.println(jsonObject);
-        Response r = restClient.postSelect(jsonObject, "/informatik/select");
+        Response r = restClient.putSelect(jsonObject, "/informatik/select");
         restClient.status(r);
         List<Book> result = r.readEntity(new GenericType<>() {});
         for (Book book : result) {
@@ -306,50 +337,64 @@ public class InterfaceController {
 
         autorField.clear();
         isbnField.clear();
-        verlagField.clear();
+        titelField.clear();
         teilgebieteField.clear();
 
     }
-    public void sendUpdate(ActionEvent actionEvent) {
-        String update = getString(updateSetISBN, updateSetTitel, updateSetAutor, updateSetTeilgebiet, updateSetVerlag, updateSetErscheinungsjahr,updateSetSeitenzahl);
+
+    /**
+     * In der Methode "update" ist die Funktionalität, Inhalte zu updaten, implementiert. Um ein Buch zu updaten, muss es per ISBN ausgewählt werden
+     * und kann dann an jeder Stelle verändert werden.
+     * @param actionEvent Parameter für das Action Event
+     */
+    public void update(ActionEvent actionEvent) {
+        String update = getString(updateISBN, updateTitel, updateAutor, updateTeilgebiet, updateVerlag, updateErscheinungsjahr, updateSeitenzahl);
         String whereParam = null;
 
-        if (updateWhereColumnField.getText().isEmpty()) {
+        if (updateFieldCheckISBN.getText().isEmpty()) {
             alert.show();
         }
         else {
-            whereParam = updateWhereColumnField.getText();
+            whereParam = updateFieldCheckISBN.getText();
         }
 
-        Response r = restClient.postUpdate(update, whereParam, "/informatik/update");
+        Response r = restClient.putUpdate(update, whereParam, "/informatik/update");
         restClient.status(r);
-        sendSelect(actionEvent);
-        updateSetISBN.clear();
-        updateSetTitel.clear();
-        updateSetAutor.clear();
-        updateSetTeilgebiet.clear();
-        updateSetVerlag.clear();
-        updateSetErscheinungsjahr.clear();
-        updateSetSeitenzahl.clear();
+        select(actionEvent);
+        updateISBN.clear();
+        updateTitel.clear();
+        updateAutor.clear();
+        updateTeilgebiet.clear();
+        updateVerlag.clear();
+        updateErscheinungsjahr.clear();
+        updateSeitenzahl.clear();
         updatePane.setVisible(false);
     }
-    public void sendDelete(ActionEvent actionEvent) {
 
-        if (deleteField.getText().isEmpty()) {
+    /**
+     * In der Methode "delete" ist die Funktionalität, Inhalte zu löschen, implementiert. Um ein Buch zu löschen, muss der User die ISBN des Buches eingeben.
+     * @param actionEvent Parameter für das Action Event
+     */
+    public void delete(ActionEvent actionEvent) {
+
+        if (deleteFieldCheckISBN.getText().isEmpty()) {
             alert.show();
         }
         else {
-            String query = deleteField.getText();
+            String query = deleteFieldCheckISBN.getText();
             Response r = restClient.putDelete(query, "/informatik/delete");
             restClient.status(r);
         }
-        sendSelect(actionEvent);
-        deleteField.clear();
+        select(actionEvent);
+        deleteFieldCheckISBN.clear();
         deletePane.setVisible(false);
     }
 
 
-
+    /**
+     * In der Methode "insert" ist die Funktionalität, Inhalte hinzuzufügen, implementiert. Um ein Buch hinzuzufügen, muss der User jedes Feld ausfüllen.
+     * @param actionEvent Parameter für das Action Event
+     */
     public void insert(ActionEvent actionEvent) {
         Book newBook = new Book();
         if (
@@ -375,7 +420,7 @@ public class InterfaceController {
 
         Response r = restClient.putInsert(newBook, "/informatik/insert");
         restClient.status(r);
-        sendSelect(actionEvent);
+        select(actionEvent);
         insertISBN.clear();
         insertAutor.clear();
         insertVerlag.clear();
@@ -387,14 +432,21 @@ public class InterfaceController {
     }
 
 
-
-
-
+    /**
+     * In der Methode "removeAll" wird implementiert, dass der "All" RadioButton im select-Befehl deaktiviert wird
+     * (Wenn ein anderer RadioButton ausgewählt wird)
+     *
+     * @param actionEvent Parameter für das Action Event
+     */
     public void removeAll(ActionEvent actionEvent) {
 
         radioAll.setSelected(false);
     }
 
+    /**
+     * In der Methode "setAll" wird implementiert, dass die RadioButtons deaktiviert werden, wenn der "All" RadioButton ausgewählt wird
+     * @param actionEvent Parameter für das Action Event
+     */
     public void setAll(ActionEvent actionEvent) {
 
 
@@ -410,7 +462,17 @@ public class InterfaceController {
     }
 
 
-
+    /**
+     * In der Methode "getString" werden Strings für die Methode "update" generiert.
+     * @param field1 Parameter für Textfeld 1
+     * @param field2 Parameter für Textfeld 2
+     * @param field3 Parameter für Textfeld 3
+     * @param field4 Parameter für Textfeld 4
+     * @param field5 Parameter für Textfeld 5
+     * @param field6 Parameter für Textfeld 6
+     * @param field7 Parameter für Textfeld 7
+     * @return gibt String wieder
+     */
     private String getString(TextField field1, TextField field2, TextField field3, TextField field4, TextField field5, TextField field6, TextField field7) {
         var sj = new StringJoiner(", ", "", "");
         if (!field1.getText().isEmpty()) sj.add("ISBN='" + field1.getText() + "'");

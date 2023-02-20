@@ -11,6 +11,7 @@ import java.io.IOException;
  * @date 30.11.2023
  * @author Carolin Baum m29137
  *
+ * In der Klasse "Interface" wird das Loginfenster aufgerufen und somit auch die Login.fxml
  */
 
 public class Interface extends Application {
@@ -25,7 +26,7 @@ public class Interface extends Application {
         loginStage = stage;
         try {
             Scene loginScene = new Scene(loader.load());
-            loginStage.setTitle("Login");
+            loginStage.setTitle("Login Datenbankmanagementsystem");
             loginStage.setScene(loginScene);
             loginStage.setResizable(false);
             loginStage.show();

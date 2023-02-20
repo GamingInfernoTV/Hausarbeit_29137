@@ -18,6 +18,8 @@ import java.util.Objects;
  * @date 30.11.2023
  * @author Carolin Baum m29137
  *
+ * In der Klasse "LogInController" wird die Funktion hinter dem Login implementiert. Der Controller steht in Verbindung mit der Interface.fxml. Je nach User
+ * werden andere Funktionen angezeigt.
  */
 
 public class LogInController {
@@ -30,14 +32,27 @@ public class LogInController {
     public Button loginButton;
     Alert alert = new Alert(Alert.AlertType.ERROR);
 
+    /**
+     * Methode "LogInController" um die Verbindung zum InterfaceController zu schaffen
+     */
     public LogInController() {
 
     }
 
+    /**
+     * In der Methode "getRestClient" wird der restClient wiedergegeben.
+     * @return gibt restClient wieder
+     */
     public RestClient getRestClient() {
         return restClient;
     }
 
+    /**
+     * In der Methode "sendLogin" wird implementiert, welche User sich einloggen können. Benutzername oder Passwort können willkürlich sein.
+     * Hier wird auch die Verbindung (Bei erfolgreichem Login) zur Interface.fxml geschaffen.
+     * @param actionEvent Parameter für action Event
+     * @throws IOException gibt Fehlermeldung wieder
+     */
     public void sendLogin(ActionEvent actionEvent) throws IOException {
         Login login = new Login(userField.getText(), passwordField.getText());
 
@@ -46,7 +61,7 @@ public class LogInController {
         Scene scene = new Scene(fxmlLoader.load());
         InterfaceController c = fxmlLoader.getController();
 
-        stage.setTitle("Hausarbeit");
+        stage.setTitle("Hausarbeit Datenbankmanagementsystem");
         stage.setScene(scene);
         stage.setResizable(false);
 

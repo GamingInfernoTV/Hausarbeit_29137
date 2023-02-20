@@ -7,6 +7,7 @@ import javafx.application.Application;
  * @date 30.11.2023
  * @author Carolin Baum m29137
  *
+ * In der Klasse "Main" wird die Applikation gestartet.
  */
 
 public class Main {

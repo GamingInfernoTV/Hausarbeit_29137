@@ -10,7 +10,9 @@ import java.util.Set;
  * @date 30.11.2023
  * @author Carolin Baum m29137
  *
+ * In der Klasse "App" wird die Applikation erstellt.
  */
+
 public class App extends Application {
     private static final Set<Class<?>> classes = new HashSet<>();
 

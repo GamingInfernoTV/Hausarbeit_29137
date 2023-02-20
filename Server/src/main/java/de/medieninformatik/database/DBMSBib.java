@@ -12,6 +12,7 @@ import java.util.Objects;
  * @date 30.11.2023
  * @author Carolin Baum m29137
  *
+ * In der Klasse "DBMSBib" wird die Connection zur Datenbank aufgebaut und Befehle wie select, delete, insert und upadte implementiert.
  */
 
 public class DBMSBib {
@@ -23,6 +24,11 @@ public class DBMSBib {
     //Bib = Bibliothek
 
     //TODO funktionen umbenennen und eventuell funktionsweise ändern
+
+    /**
+     * In der Methode "getInstance" wird die Instanz aufgerufen. Falls etwas nicht funktioniert, wird eine Fehlermeldung ausgeworfen.
+     * @return Gibt Instanz wieder
+     */
     public synchronized static DBMSBib getInstance() {
         if (instance == null) {
             try {
@@ -37,23 +43,29 @@ public class DBMSBib {
         return instance;
     }
 
-
-    public static List<Book> selectData(String select, String whereParam, String query) {
+    /**
+     * In der Methode "selectData" wird der Select-Befehl implementiert.
+     * @param select Paramater für select-Befehl
+     * @param where Parameter für where-Befehl
+     * @param query Parameter für die query
+     * @return gibt die Liste wieder
+     */
+    public static List<Book> selectData(String select, String where, String query) {
         Connection conn = DBMSBib.getInstance().getConnection();
         List<Book> list = new ArrayList<>();
         if (conn != null) {
             try (Statement statement = conn.createStatement()) {
                 String sql = "SELECT " + select + " FROM informatik.book ";
-                if ("isbn".equals(whereParam)) {
+                if ("isbn".equals(where)) {
                     sql += "WHERE isbn like '%" + query + "%'";
                 }
-                if ("autor".equals(whereParam)) {
+                if ("autor".equals(where)) {
                     sql += "WHERE autor like '%" + query + "%'";
                 }
-                if ("verlag".equals(whereParam)) {
-                    sql += "WHERE verlag like '%" + query + "%'";
+                if ("titel".equals(where)) {
+                    sql += "WHERE titel like '%" + query + "%'";
                 }
-                if ("teilgebiet".equals(whereParam)) {
+                if ("teilgebiet".equals(where)) {
                     sql += "WHERE teilgebiet like '%" + query + "%'";
                 }
                 sql += ";";
@@ -88,6 +100,11 @@ public class DBMSBib {
         return list;
     }
 
+    /**
+     * In der Methode "deleteData" wird der delete-Befehl implementiert.
+     * @param query Parameter für die Query
+     * @return Gibt Boolean wieder
+     */
     public static Boolean deleteData(String query) {
         Connection conn = DBMSBib.getInstance().getConnection();
         Boolean bool = false;
@@ -107,19 +124,12 @@ public class DBMSBib {
         return bool;
     }
 
-    public synchronized Connection getConnection() {
-        if (instance != null) {
-            try {
-                //TODO (ganz am ende) admin, admin durch minf, prog3 ersetzen
-                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "minf", "prog3");
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        Objects.requireNonNull(connection);
-        return connection;
-    }
 
+    /**
+     * In der Methode "insertData" wird der insert-Befehl implementiert.
+     * @param book Parameter für das Buch in der Datenbank
+     * @return gibt Boolean wieder
+     */
     public static Boolean insertData(Book book) {
         Connection conn = DBMSBib.getInstance().getConnection();
         Boolean bool = false;
@@ -142,6 +152,12 @@ public class DBMSBib {
         return bool;
     }
 
+    /**
+     * In der Methode "updateData" wird der update-Befehl implementiert.
+     * @param query Parameter für die Query
+     * @param whereParam Parameter für where
+     * @return gibt Boolean wieder.
+     */
     public static Boolean updateData(String query, String whereParam) {
         Connection conn = DBMSBib.getInstance().getConnection();
         Boolean bool = false;
@@ -158,6 +174,23 @@ public class DBMSBib {
             }
         }
         return bool;
+    }
+
+    /**
+     * In der Methode "getConnection" wird die Verbindung mit dem User implementiert
+     * @return Gibt die Connection wieder
+     */
+    public synchronized Connection getConnection() {
+        if (instance != null) {
+            try {
+                //TODO (ganz am ende) admin, admin durch minf, prog3 ersetzen
+                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "minf", "prog3");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        Objects.requireNonNull(connection);
+        return connection;
     }
 }
 
